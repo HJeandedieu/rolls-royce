@@ -77,8 +77,21 @@ function App() {
   },
 ];
 
+const TESTIMONIALS = [
+  { name: "Maximilian V.", location: "Geneva, Switzerland", text: "RedBlue Rolls delivered the Phantom in a condition that surpassed every expectation. The white-glove service was unmatched.", rating: 5 },
+  { name: "Sophia Laurent", location: "Monaco", text: "The Ghost I ordered was configured to my exact specifications. Delivered to my door with a handwritten note. Extraordinary.", rating: 5 },
+  { name: "James Thornton", location: "London, UK", text: "Third purchase through RedBlue. The process never ceases to amaze me — seamless, personal, and perfectly curated.", rating: 5 },
+]
+
 const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
+
+const FOOTER_CONTENT = [
+  {heading:"collection", links: ['All Models', 'Phantom', 'Ghost', 'Cullinan', 'Wraith', 'Spectre']},
+  {heading: "Company", links: ['Our Story', 'Bespoke', 'Certification', 'Press', 'Careers']},
+  {heading: "Contact", links: ['Monaco Office', 'London Office', 'Private Enquiry', 'Concierge', 'FAQ']}
+]
   return (
+    <>
     <main className="rolls-royce">
       {/* NAVBAR */}
       <nav>
@@ -139,6 +152,13 @@ const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
           <p>THE FLEET</p>
           <h1>Latest <span>Vehicles</span></h1>
         </div>
+        <div>
+          {
+            CATEGORIES.map(category => 
+              <button key={category} className="category_button">{category}</button>
+            )
+          }
+        </div>
         {/* VEHICLE CATEGORIZATION TABS */}
         <div>
           {
@@ -179,9 +199,59 @@ const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
       {/* EXPERIENCE INTRO TEXT */}
       <section>
         <p>Client Stories</p>
-        <h2></h2>
+        <h2>The <span>Rolls Experience</span></h2>
+        {
+          TESTIMONIALS.map((t, i) =>(
+            <div className="testimonial-card">
+              <div className="testimonial-stars">
+                {[...Array(t.rating)].map((_, si) => <span key={si} className="star">★</span>)}
+              </div>
+              <p className="testimonial-text">{t.text}</p>
+              <div className="testimonial-author">
+                <span className="testimonial-author">{t.name}</span>
+                <span className="testimonial-name">{t.location}</span>
+              </div>
+            </div>
+          ))}
+      </section>
+
+          {/* JOIN THE COMMUNITY */}
+      <section>
+          <div className="join-container">
+            <p>Private List</p>
+            <p>First Access</p>
+            <p>Always</p>
+            <p>Join our private registry for exclusive previews and bespoke acquisition opportunities.</p>
+            <div>
+              <input type="text" placeholder="Your email address" className="input-registry" />
+              <button className="registry-button">JOIN REGISTRY</button>
+            </div>
+          </div>
       </section>
     </main>
+    <footer>
+      <div className="footer-container">
+        <div>
+          <h2 className="footer-heading">Red<span>Blue</span> Rolls</h2>
+          <p className="footer-text">The world's most exclusive Rolls-Royce acquisition service. Private. Precise. Perfection.</p>
+        </div>
+        <div>
+        {FOOTER_CONTENT.map((content, index)=>
+        <div key={index} className="footer-content">
+        <h1 className="footer-heading">{content.heading}</h1>
+        <ul className="footer-links">{content.links.map((element, index)=>(
+          <li className="footer-link" key={index}>{element}</li>
+        ))}</ul>
+        </div>
+        )}
+        </div>
+      </div>
+      <div>
+        <p>© 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
+        <p>Monaco · London · Dubai · Singapore</p>
+      </div>
+    </footer>
+    </>
   )
 }
 
