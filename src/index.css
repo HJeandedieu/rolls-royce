@@ -335,11 +335,6 @@ span{
 
 /* FOOTER STYLING */
 
-footer{
-  padding:0rem 2rem;
-  padding-top:5rem;
-}
-
 .footer-heading{
   font-size:2rem;
 }
@@ -355,6 +350,7 @@ footer{
 }
 
 .footer-container{
+  padding: 5rem 2rem;
   display:flex;
   justify-content:space-between;
   padding-right:10rem;
@@ -377,5 +373,10 @@ footer{
 }
 
 .footer-bottom{
-  
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid var(--dark3);
+  color:var(--muted);
+  font-size: .8rem;
+  padding: 2rem 2rem;
 }
