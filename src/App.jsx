@@ -183,7 +183,7 @@ const FOOTER_CONTENT = [
       {/* HERITAGE SECTION */}
       <section className="heritage_container">
         <div>
-          <img className="heritage_image" src="/home/phantom.png" alt="Engage with our heritage" />
+          <img className="heritage_image" src="/home/rolls-royce-logo.avif" alt="Engage with our heritage" />
         </div>
         <div className="heritage_text">
           <h1 id="heritage_title">BESPOKE PROGRAMME</h1>
