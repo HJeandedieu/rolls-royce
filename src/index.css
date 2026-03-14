@@ -1,4 +1,197 @@
-body{
-  background-color:black;
-  color: white;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --gold: #b8965a;
+    --gold-light:#d4af70;
+    --gold-dark: #8a6a30;
+    --black: #0a0a0a;
+    --dark: #111214;
+    --dark2: #181a1e;
+    --dark3: #22252b;
+    --mid: #32363e;
+    --light: #e8e4dc;
+    --white: #f5f2ec;
+    --muted: #7a7a7a;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+  }
+
+  input,select,label,button{
+    font-family:inherit;
+    font-size:inherit;
+  }
+
+body {font-family: var(--font-body); background-color:rgb(11,11,11); color: var(--white); overflow-x: hidden;}
+
+/* NAVBAR STYLES */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom: 1px solid rgb(27,24,18);
+  padding: 0px 2rem;
+}
+
+.navigation-intro-text{
+  color:var(--white);
+  font-family:var(--font-display);
+  font-weight:100;
+}
+
+span{
+  color:var(--gold)
+}
+
+.navigation-links{
+  display:flex;
+  gap:1rem;
+}
+
+.navigation-links a{
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:bold;
+  font-size:.85rem;
+}
+
+.nav-button{
+  padding:0.5rem 2rem;
+  margin-left:1rem;
+}
+
+.login{
+  background-color: transparent; 
+  color:var(--gold-dark); 
+  border:1px solid var(--gold-dark);
+}
+
+.signup{
+  background-color:var(--gold);
+  font-weight:bold;
+  border:none;
+}
+
+
+/* MAIN CONTENT INTRO TEXT */
+.main_text{
+  padding: 3rem 2rem;
+}
+.supscript{
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size:.75rem;
+  font-weight:400;
+  letter-spacing: .5rem;
+  line-height:0rem;
+}
+
+.title{
+  color:var(--white);
+  font-family:var(--font-display);
+  font-size:6rem;
+  font-weight:100;
+  line-height:4.5rem;
+}
+
+.title_span{
+  font-style:italic;
+}
+
+.main_text_paragraph{
+  color:var(--muted);
+  font-size: 0.85rem;
+}
+
+/* EXPLORE CONTAINER */
+
+.explore_container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.explore_collection{
+  background-color:var(--gold-light);
+  padding:1rem;
+  font-weight:700;
+  font-size:0.8rem;
+  margin-right:2rem;
+}
+
+.explore_story{
+  background-color:transparent;
+  color:var(--light);
+  border: 1px solid var(--mid);
+  padding:1rem;
+  font-size:0.85rem;
+  font-weight:500
+}
+
+.stats_container{
+  display:flex;
+  gap:1rem;
+}
+
+.stats_number{
+  color:var(--gold);
+  font-size:3rem;
+  font-family: var(--font-display);
+  line-height:0rem;
+}
+
+.stats_text{
+  font-size:.75rem;
+  color: var(--muted)
+}
+
+
+/* INFINITI CAROUSEL*/
+
+/* VEHICLES */
+
+
+/* VEHICLES INTRO TEXT */
+.vehicles_section{
+  padding:0 2rem;
+}
+
+.vehicles_heading{
+  font-size:3rem;
+}
+.categories_buttons_container{
+  margin:2rem 0rem;
+}
+
+.category_button{
+  background-color:transparent;
+  font-weight:500;
+  padding:.5rem 1rem;
+  margin-right:.5rem;
+  color:var(--muted);
+  border: 1px solid var(--mid);
+  text-transform:uppercase;
+  font-size:0.75rem;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.vehicles_container{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+
+.vehicle_img{
+  height:20rem;
+}
+
+.vehicle_description{
+  display:none;
+}
+
+
+/* HERITAGE SECTION */
+
+.heritage_container{
+  padding:2rem;
+  
 }

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -75,7 +75,7 @@ function App() {
     img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80",
     color: "#2d3a4a",
   },
-];
+]
 
 const TESTIMONIALS = [
   { name: "Maximilian V.", location: "Geneva, Switzerland", text: "RedBlue Rolls delivered the Phantom in a condition that surpassed every expectation. The white-glove service was unmatched.", rating: 5 },
@@ -96,47 +96,47 @@ const FOOTER_CONTENT = [
       {/* NAVBAR */}
       <nav>
         {/* INTRO TEXT */}
-        <div>
-          <h1>RED<span>BLUE</span>ROLLS</h1>
+        <div className="navigation-intro-text">
+          <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
         </div>
         {/* NAVIGATION LINKS */}
-        <div>
+        <div className="navigation-links">
           <a href="#">HOME</a>
           <a href="#">COLLECTION</a>
           <a href="#">ABOUT</a>
           <a href="#">CONTACT</a>
         </div>
         {/* USER AUTH BUTTONS */}
-        <div>
-          <button>LOGIN</button>
-          <button>SIGN UP</button>
+        <div className="nav-buttons">
+          <button className="login nav-button">LOGIN</button>
+          <button className="signup nav-button">SIGN UP</button>
         </div>
       </nav>
       
       {/* MAIN CONTENT INTRO TEXT */}
       <section className="main_text">
-        <p>Est. 1904 · Goodwood, England</p>
-        <h1>Where Silence <br />Becomes <span>Luxury</span></h1>
-        <p>RedBlue Rolls curates the world's most exceptional motor 
-          cars for discerning collectors. Each vehicle a masterpiece. 
-          Each acquisition an event.</p>
+        <p className="main_text supscript">Est. 1904 · Goodwood, England</p>
+        <h1 className="main_text_heading title">Where Silence <br />Becomes <span className="title_span">Luxury</span></h1>
+        <p className="main_text_paragraph">RedBlue Rolls curates the world's most exceptional motor cars for <br />
+        discerning collectors. Each vehicle a masterpiece. Each acquisition an<br />
+           event.</p>
           <div className="explore_container">
-            <div className="explore_button_container">
-              <button>EXPLORE COLLECTION</button>
-              <button>OUR STORY</button>
+            <div className="explore_buttons_container">
+              <button className="explore_collection">EXPLORE COLLECTION</button>
+              <button className="explore_story">OUR STORY</button>
             </div>
             <div className="stats_container">
               <div>
-                <p>6+</p>
-                <p>MODELS</p>
+                <p className="stats_number">6+</p>
+                <p className="stats_text">MODELS</p>
               </div>
               <div>
-                <p>100%</p>
-                <p>CERTIFIED</p>
+                <p className="stats_number">100%</p>
+                <p className="stats_text">CERTIFIED</p>
               </div>
               <div>
-                <p>24/7</p>
-                <p>CONVERGE</p>
+                <p className="stats_number">24/7</p>
+                <p className="stats_text">CONVERGE</p>
               </div>
             </div>
           </div>
@@ -146,13 +146,13 @@ const FOOTER_CONTENT = [
       <section></section>
 
       {/* VEHICLES */}
-      <section>
+      <section className="vehicles_section">
         {/* VEHICLES INTRO TEXT */}
         <div>
-          <p>THE FLEET</p>
-          <h1>Latest <span>Vehicles</span></h1>
+          <p className="supscript">THE FLEET</p>
+          <h1 className="vehicles_heading title">Latest <span className="title_span">Vehicles</span></h1>
         </div>
-        <div>
+        <div className="categories_buttons_container">
           {
             CATEGORIES.map(category => 
               <button key={category} className="category_button">{category}</button>
@@ -160,11 +160,11 @@ const FOOTER_CONTENT = [
           }
         </div>
         {/* VEHICLE CATEGORIZATION TABS */}
-        <div>
+        <div className="vehicles_container">
           {
             CARS.map((car) =>
             <div key={car.id} className="vehicle_container">
-              <img src={car.img} alt={car.name} />
+              <img className="vehicle_img" src={car.img} alt={car.name} />
               <div className="vehicle_description">
                 <h3>{car.name}</h3>
                 <p>{car.year}.{car.category}</p>
@@ -181,7 +181,7 @@ const FOOTER_CONTENT = [
       </section>
 
       {/* HERITAGE SECTION */}
-      <section>
+      <section className="heritage_container">
         <div>
           <div>
             <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80" alt="Engage with our heritage" />
