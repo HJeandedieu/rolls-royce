@@ -152,7 +152,8 @@ span{
 
 /* VEHICLES INTRO TEXT */
 .vehicles_section{
-  padding:0 2rem;
+  padding:2rem 2rem;
+  background-color:var(--dark2);
 }
 
 .vehicles_heading{
@@ -192,6 +193,189 @@ span{
 /* HERITAGE SECTION */
 
 .heritage_container{
+  padding:2rem 7rem;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: var(--dark2);
+  justify-content:space-between;
+}
+
+.heritage_image{
+  width:30rem;
+}
+
+.heritage_text{
+  background-color:var(--dark3);
   padding:2rem;
+  box-shadow: 
+0 4px 6px rgba(0,0,0,0.1),
+0 10px 20px rgba(0,0,0,0.15),
+0 20px 40px rgba(0,0,0,0.2);
+}
+
+#heritage_title{
+  border: 1px solid var(--gold);
+  color:var(--gold);
+  font-size:0.78rem;
+  padding:1rem;
+  font-weight:300;
+}
+
+.heritage_heading{
+  font-size:3.5rem;
+  line-height:3rem;
+}
+
+.heritage_paragraph{
+  color:var(--muted);
+  font-size:0.85rem;
+}
+
+.heritage_button{
+  background-color:var(--gold);
+  padding:1rem;
+  border:none;
+  font-size:0.75rem;
+  font-weight:bold;
+  margin-top:1rem;
+}
+
+
+/* EXPERIENCE HEADING */
+.experience_heading{
+  font-size:3rem;
+}
+
+.experience_section{
+  padding:7rem 2rem;
+}
+
+.testimonials_container{
+  display:flex;
+  gap:.3rem;
+}
+
+.testimonial-card{
+  background-color: var(--dark3);
+  padding:2rem;
+}
+
+.testimonial-stars{
+  padding:1.5rem 0rem;
+}
+
+.testimonial-text{
+  font-size:1.1rem;
+  font-style:italic;
+  font-family: var(--font-display);
+  font-weight:100;
+  line-height:2rem;
+  letter-spacing:.05rem;
+  color: var(--light)
+}
+
+.testimonial-name{
+  text-transform:uppercase;
+  font-weight:bold;
+  color: var(--white);
+  font-size:.8rem;
+}
+
+.testimonial-location{
+  color: var(--gold);
+  font-size:0.75rem;
+}
+
+/* JOIN THE MOVEMENT SECTION */
+
+.join-container{
+  text-align:center;
+  background-color: rgb(32,34,40);
+  padding:5rem 2rem;
+}
+
+.join_span{
+  font-size:0.75rem;
+}
+
+.join-heading{
+  line-height:2rem;
+  font-size:4rem;
+}
+
+.join-text{
+  font-size:.75rem;
+  color:var(--muted);
+  font-weight:500;
+}
+
+.join-form{
+  margin:3rem 0rem;
+}
+
+.join-form input, button{
+  padding:1rem;
+}
+
+.join-form input{
+  border: 1px solid var(--gold);
+  background-color:rgb(44,46,49);
+  width:20%;
+}
+
+.join-form input::placeholder{
+  font-size:.8rem;
+}
+
+.join-form button{
+  border: 1px solid var(--gold);
+  background-color: var(--gold);
+}
+
+
+/* FOOTER STYLING */
+
+footer{
+  padding:0rem 2rem;
+  padding-top:5rem;
+}
+
+.footer-heading{
+  font-size:2rem;
+}
+
+.footer-text{
+  font-size: .8rem;
+  color:var(--muted)
+}
+
+.footer-main-content{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+
+.footer-container{
+  display:flex;
+  justify-content:space-between;
+  padding-right:10rem;
+}
+
+.footer-content ul, li{
+  list-style:none;
+}
+
+.footer-content-heading{
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size:.78rem;
+  font-weight:500;
+}
+
+.footer-link{
+  color: var(--muted);
+  font-size:.8rem;
+}
+
+.footer-bottom{
   
 }

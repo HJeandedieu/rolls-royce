@@ -183,23 +183,22 @@ const FOOTER_CONTENT = [
       {/* HERITAGE SECTION */}
       <section className="heritage_container">
         <div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80" alt="Engage with our heritage" />
-          </div>
-          <div>
-            <h1 id="heritage_title">BESPOKE PROGRAMME</h1>
-            <h2>Every Detail <br />Hand-Crafted</h2>
-            <p>At Goodwood, over 2,000 skilled artisans spend an average of 450 hours crafting a single vehicle. From the 20-hide 
-              leather interiors to hand-painted coachlines drawn in one breath — perfection is not an aspiration, it is a standard.</p>
-              <button>DISCOVER OUR HERITAGE</button>
-          </div>
+          <img className="heritage_image" src="/home/phantom.png" alt="Engage with our heritage" />
+        </div>
+        <div className="heritage_text">
+          <h1 id="heritage_title">BESPOKE PROGRAMME</h1>
+          <h2 className="title heritage_heading">Every Detail <br />Hand-Crafted</h2>
+          <p className="heritage_paragraph">At Goodwood, over 2,000 skilled artisans spend an average of 450 hours crafting a single vehicle. From the 20-hide 
+            leather interiors to hand-painted coachlines drawn in one breath. Perfection is not an aspiration, it is a standard.</p>
+            <button class="heritage_button">DISCOVER OUR HERITAGE</button>
         </div>
       </section>
 
       {/* EXPERIENCE INTRO TEXT */}
-      <section>
-        <p>Client Stories</p>
-        <h2>The <span>Rolls Experience</span></h2>
+      <section className="experience_section">
+        <p className="supscript">Client Stories</p>
+        <h2 className="experience_heading title">The <span className="title_span">Rolls Experience</span></h2>
+        <div className="testimonials_container">
         {
           TESTIMONIALS.map((t, i) =>(
             <div className="testimonial-card">
@@ -208,21 +207,22 @@ const FOOTER_CONTENT = [
               </div>
               <p className="testimonial-text">{t.text}</p>
               <div className="testimonial-author">
-                <span className="testimonial-author">{t.name}</span>
-                <span className="testimonial-name">{t.location}</span>
+                <p className="testimonial-name">{t.name}</p>
+                <p className="testimonial-location">{t.location}</p>
               </div>
             </div>
           ))}
+          </div>
       </section>
 
           {/* JOIN THE COMMUNITY */}
       <section>
           <div className="join-container">
-            <p>Private List</p>
-            <p>First Access</p>
-            <p>Always</p>
-            <p>Join our private registry for exclusive previews and bespoke acquisition opportunities.</p>
-            <div>
+            <p className="supscript join_span">Private List</p>
+            <p className="title join-heading">First Access</p>
+            <p className="title join-heading">Always</p>
+            <p className="join-text">Join our private registry for exclusive previews and bespoke acquisition opportunities.</p>
+            <div className="join-form">
               <input type="text" placeholder="Your email address" className="input-registry" />
               <button className="registry-button">JOIN REGISTRY</button>
             </div>
@@ -232,21 +232,20 @@ const FOOTER_CONTENT = [
     <footer>
       <div className="footer-container">
         <div>
-          <h2 className="footer-heading">Red<span>Blue</span> Rolls</h2>
-          <p className="footer-text">The world's most exclusive Rolls-Royce acquisition service. Private. Precise. Perfection.</p>
+          <h2 className="footer-heading title">Red<span>Blue</span> Rolls</h2>
+          <p className="footer-text">The world's most exclusive Rolls-Royce <br />acquisition service. Private. Precise. Perfection.</p>
         </div>
-        <div>
+        
         {FOOTER_CONTENT.map((content, index)=>
         <div key={index} className="footer-content">
-        <h1 className="footer-heading">{content.heading}</h1>
-        <ul className="footer-links">{content.links.map((element, index)=>(
-          <li className="footer-link" key={index}>{element}</li>
-        ))}</ul>
+        <h1 className="footer-content-heading">{content.heading}</h1>
+        <div className="footer-links">{content.links.map((element, index)=>(
+          <p className="footer-link" key={index}>{element}</p>
+        ))}</div>
         </div>
         )}
         </div>
-      </div>
-      <div>
+      <div className="footer-bottom">
         <p>© 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
         <p>Monaco · London · Dubai · Singapore</p>
       </div>
