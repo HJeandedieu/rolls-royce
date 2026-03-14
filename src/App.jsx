@@ -115,28 +115,28 @@ const FOOTER_CONTENT = [
       
       {/* MAIN CONTENT INTRO TEXT */}
       <section className="main_text">
-        <p>Est. 1904 · Goodwood, England</p>
-        <h1>Where Silence <br />Becomes <span>Luxury</span></h1>
-        <p>RedBlue Rolls curates the world's most exceptional motor 
-          cars for discerning collectors. Each vehicle a masterpiece. 
-          Each acquisition an event.</p>
+        <p className="main_text supscript">Est. 1904 · Goodwood, England</p>
+        <h1 className="main_text_heading">Where Silence <br />Becomes <span className="main_text_span">Luxury</span></h1>
+        <p className="main_text_paragraph">RedBlue Rolls curates the world's most exceptional motor cars for <br />
+        discerning collectors. Each vehicle a masterpiece. Each acquisition an<br />
+           event.</p>
           <div className="explore_container">
-            <div className="explore_button_container">
-              <button>EXPLORE COLLECTION</button>
-              <button>OUR STORY</button>
+            <div className="explore_buttons_container">
+              <button className="explore_collection">EXPLORE COLLECTION</button>
+              <button className="explore_story">OUR STORY</button>
             </div>
             <div className="stats_container">
               <div>
-                <p>6+</p>
-                <p>MODELS</p>
+                <p className="stats_number">6+</p>
+                <p className="stats_text">MODELS</p>
               </div>
               <div>
-                <p>100%</p>
-                <p>CERTIFIED</p>
+                <p className="stats_number">100%</p>
+                <p className="stats_text">CERTIFIED</p>
               </div>
               <div>
-                <p>24/7</p>
-                <p>CONVERGE</p>
+                <p className="stats_number">24/7</p>
+                <p className="stats_text">CONVERGE</p>
               </div>
             </div>
           </div>
