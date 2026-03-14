@@ -12,7 +12,7 @@ function App() {
     badge: "Flagship",
     description: "The pinnacle of automotive craftsmanship. 563 horsepower of serene power wrapped in hand-stitched leather and 44 lbs of sound-deadening material.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "/home/phantom.jpg",
+    img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=800&q=80",
     color: "#c8a96e",
   },
   {
@@ -24,7 +24,7 @@ function App() {
     badge: "Best Seller",
     description: "Post Opulence. A whisper of power, a cathedral of calm. The Ghost redefines what a modern luxury sedan can be.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "/home/ghost.jpg",
+    img: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80",
     color: "#9ea8b3",
   },
   {
@@ -36,7 +36,7 @@ function App() {
     badge: "New",
     description: "Effortless everywhere. The world's only true super-luxury SUV, hand-built at Goodwood for those who refuse compromise.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "850 Nm", top: "250 km/h" },
-    img: "/home/cullinan.jpg",
+    img: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80",
     color: "#3d5a4e",
   },
   {
@@ -48,7 +48,7 @@ function App() {
     badge: "Limited",
     description: "The most powerful Rolls-Royce ever built. A grand tourer that draws power from the stars — its panoramic Starlight Headliner a testament.",
     specs: { engine: "6.6L V12", power: "624 HP", torque: "820 Nm", top: "250 km/h" },
-    img: "/home/wraith.jpg",
+    img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
     color: "#6b4226",
   },
   {
@@ -60,7 +60,7 @@ function App() {
     badge: "Exclusive",
     description: "Open air perfection. The Dawn takes 22 seconds to lower its roof — each second a ceremony of transformation.",
     specs: { engine: "6.6L V12", power: "563 HP", torque: "820 Nm", top: "250 km/h" },
-    img: "/home/dawn.jpg",
+    img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
     color: "#c4a882",
   },
   {
@@ -72,10 +72,10 @@ function App() {
     badge: "Electric",
     description: "The first fully electric Rolls-Royce. 585 horsepower of silent, instant torque. The future of effortless luxury.",
     specs: { engine: "Dual Motor EV", power: "585 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "/home/spectre.jpg",
+    img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80",
     color: "#2d3a4a",
   },
-];
+]
 
 const TESTIMONIALS = [
   { name: "Maximilian V.", location: "Geneva, Switzerland", text: "RedBlue Rolls delivered the Phantom in a condition that surpassed every expectation. The white-glove service was unmatched.", rating: 5 },
@@ -116,7 +116,7 @@ const FOOTER_CONTENT = [
       {/* MAIN CONTENT INTRO TEXT */}
       <section className="main_text">
         <p className="main_text supscript">Est. 1904 · Goodwood, England</p>
-        <h1 className="main_text_heading">Where Silence <br />Becomes <span className="main_text_span">Luxury</span></h1>
+        <h1 className="main_text_heading title">Where Silence <br />Becomes <span className="title_span">Luxury</span></h1>
         <p className="main_text_paragraph">RedBlue Rolls curates the world's most exceptional motor cars for <br />
         discerning collectors. Each vehicle a masterpiece. Each acquisition an<br />
            event.</p>
@@ -146,13 +146,13 @@ const FOOTER_CONTENT = [
       <section></section>
 
       {/* VEHICLES */}
-      <section>
+      <section className="vehicles_section">
         {/* VEHICLES INTRO TEXT */}
         <div>
-          <p>THE FLEET</p>
-          <h1>Latest <span>Vehicles</span></h1>
+          <p className="supscript">THE FLEET</p>
+          <h1 className="vehicles_heading title">Latest <span className="title_span">Vehicles</span></h1>
         </div>
-        <div>
+        <div className="categories_buttons_container">
           {
             CATEGORIES.map(category => 
               <button key={category} className="category_button">{category}</button>
@@ -160,11 +160,11 @@ const FOOTER_CONTENT = [
           }
         </div>
         {/* VEHICLE CATEGORIZATION TABS */}
-        <div>
+        <div className="vehicles_container">
           {
             CARS.map((car) =>
             <div key={car.id} className="vehicle_container">
-              <img src={car.img} alt={car.name} />
+              <img className="vehicle_img" src={car.img} alt={car.name} />
               <div className="vehicle_description">
                 <h3>{car.name}</h3>
                 <p>{car.year}.{car.category}</p>
@@ -181,7 +181,7 @@ const FOOTER_CONTENT = [
       </section>
 
       {/* HERITAGE SECTION */}
-      <section>
+      <section className="heritage_container">
         <div>
           <div>
             <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80" alt="Engage with our heritage" />
