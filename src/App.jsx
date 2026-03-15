@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState } from 'react'
 
 const CARS = [
   {
@@ -10,7 +10,7 @@ const CARS = [
     badge: "Flagship",
     description: "The pinnacle of automotive craftsmanship. 563 horsepower of serene power wrapped in hand-stitched leather and 44 lbs of sound-deadening material.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=400&q=60",
+    img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=800&q=80",
     color: "#c8a96e",
   },
   {
@@ -174,7 +174,7 @@ function App() {
             CARS.map((car) =>
             <div key={car.id} className="vehicle_card">
               <div className="vehicle_container">
-                <img className="vehicle_img" src={car.img} alt={car.name} loading="lazy" />
+                <img className="vehicle_img" src={car.img} alt={car.name} />
                 <div className="vehicle_description">
                   <h3 className="vehicle_name">{car.name}</h3>
                   <p className="vehicle_stats">{car.year} . {car.category}</p>
@@ -308,7 +308,7 @@ function App() {
               CARS.map((car) =>
               <div key={car.id} className="vehicle_card">
                 <div className="vehicle_container">
-                  <img className="vehicle_img" src={car.img} alt={car.name} loading="lazy" />
+                  <img className="vehicle_img" src={car.img} alt={car.name} />
                   <div className="vehicle_description">
                     <h3 className="vehicle_name">{car.name}</h3>
                     <p className="vehicle_stats">{car.year} . {car.category}</p>
@@ -409,16 +409,16 @@ function App() {
         {/* RESERVE CONSULTATION */}
         <section className="reservation_section">
           {/* JOURNEY INTRO TEXT */}
-          <div className="reservation_intro_text_heading">
+          <div>
             <p className="supscript">GET IN TOUCH</p>
-            <h1 className="reservation_heading title">Begin Your <span className="title_span">Journey</span></h1>
+            <h1 className="reserve_heading title">Begin Your <span className="title_span">Journey</span></h1>
           </div>
 
           {/* MAIN JOIN COMMUNITY CONTENT*/}
 
           <div className="join_content_container">
             <div className="address_info_container">
-              <h1 className="address_title">OUR OFFICES</h1>
+              <h1 className="address_supscript">OUR OFFICES</h1>
               {/* HEADQUARTERS */}
               <div>
                 <h1>MONACO HQ</h1>
@@ -454,7 +454,7 @@ function App() {
                 {/* INTRO TEXT */}
                 <div className="reservation_intro_text">
                   <p className="supscript registration-supscript">PRIVATE ENQUIRY</p>
-                  <h1 className="reservation_heading title">Reserve a Consultation</h1>
+                  <h1 className="reservation_form_heading title">Reserve a Consultation</h1>
                 </div>
                 <form action="#">
                   <div className="user_initials">

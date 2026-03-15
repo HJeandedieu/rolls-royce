@@ -55,6 +55,28 @@ span{
   background-color:transparent;
   border:none;
   cursor:pointer;
+  position:relative;
+  width:fit-content;  
+}
+
+.navigation-links button:hover{
+  color:var(--gold);
+  transition:0.3s ease-in-out;
+}
+
+.navigation-links button::after{
+  content:"";
+  position:absolute;
+  bottom: -2px;
+  left:0;
+  width:0;
+  height: 1px;
+  background:var(--gold);
+  transition: width 0.3s ease;
+}
+
+.navigation-links button:hover::after{
+  width:100%;
 }
 
 .nav-button{
@@ -458,9 +480,13 @@ span{
   padding:2rem;
 }
 
-.reservation_heading{
-  font-size: 6rem;
+.reserve_heading{
+  font-size: 4rem;
   padding:1rem 0rem;
+}
+
+.reservation_form_heading{
+  font-size:3rem;
 }
 
 .reservation_intro_text_heading{
@@ -477,6 +503,10 @@ span{
 .address_info_container{
   background-color:rgb(34,37,43);
   padding: 3rem 2rem;
+}
+
+.address_supscript{
+  padding-bottom:3rem;
 }
 
 .address_title{
