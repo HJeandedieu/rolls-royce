@@ -163,15 +163,17 @@ const FOOTER_CONTENT = [
         <div className="vehicles_container">
           {
             CARS.map((car) =>
-            <div key={car.id} className="vehicle_container">
-              <img className="vehicle_img" src={car.img} alt={car.name} />
-              <div className="vehicle_description">
-                <h3>{car.name}</h3>
-                <p>{car.year}.{car.category}</p>
-                <p className="vehicle_description">{car.description}</p>
-                <div>
-                  <span>{car.price}</span>
-                  <button className="vehicle_config_button">CONFIGURE</button>
+            <div key={car.id} className="vehicle_card">
+              <div className="vehicle_container">
+                <img className="vehicle_img" src={car.img} alt={car.name} />
+                <div className="vehicle_description">
+                  <h3 className="vehicle_name">{car.name}</h3>
+                  <p className="vehicle_stats">{car.year} . {car.category}</p>
+                  <p className="vehicle_description_text" hidden>{car.description}</p>
+                  <div className="vehicle-price-tag">
+                    <span className="vehicle_price">{car.price}</span>
+                    <button className="vehicle_config_button">CONFIGURE</button>
+                  </div>
                 </div>
               </div>
             </div>

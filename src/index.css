@@ -179,16 +179,67 @@ span{
 .vehicles_container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+
+.vehicle_container{
+  position:relative;
+  height:20rem;
+  overflow:hidden;
+}
+
+.vehicle_container::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to top,rgba(0, 0, 0, 0.912),rgba(8, 8, 8, 0.437),transparent);
+  z-index:1;
 }
 
 .vehicle_img{
-  height:20rem;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 60%;
 }
+
 
 .vehicle_description{
-  display:none;
+  position:absolute;
+  bottom:1rem;
+  padding:0rem 2rem;
+  z-index:10;
 }
 
+.vehicle_name{
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-weight:100;
+  line-height:0rem;
+}
+
+.vehicle_stats{
+  color:var(--gold);
+  font-size:0.8rem;
+  word-spacing:.3rem;
+  text-transform:uppercase;
+}
+
+.vehicle-price-tag{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  justify-content:space-between;
+  width:25rem;
+}
+
+.vehicle_price{
+  font-family:var(--font-display);
+  font-size:1.5rem;
+}
+
+.vehicle_config_button{
+  margin-left:auto;
+}
 
 /* HERITAGE SECTION */
 
