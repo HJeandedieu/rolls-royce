@@ -47,11 +47,14 @@ span{
   gap:1rem;
 }
 
-.navigation-links a{
+.navigation-links button{
   text-decoration:none;
   color:var(--muted);
   font-weight:bold;
   font-size:.85rem;
+  background-color:transparent;
+  border:none;
+  cursor:pointer;
 }
 
 .nav-button{
@@ -228,8 +231,7 @@ span{
 .vehicle-price-tag{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  justify-content:space-between;
-  width:25rem;
+  gap:12rem;
 }
 
 .vehicle_price{
@@ -238,7 +240,12 @@ span{
 }
 
 .vehicle_config_button{
-  margin-left:auto;
+  background-color:transparent;
+  color:var(--gold);
+  border: 1px solid var(--gold-dark);
+  font-size:0.7rem;
+  width:fit-content;
+  padding:0rem 2rem;
 }
 
 /* HERITAGE SECTION */
@@ -431,4 +438,14 @@ span{
   color:var(--muted);
   font-size: .8rem;
   padding: 2rem 2rem;
+}
+
+
+/* ABOUT PAGE */
+
+.about-heading{
+  text-align:center;
+  margin-top:30vh;
+  font-family:var(--font-display);
+  color: var(--muted);
 }
