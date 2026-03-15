@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 
 const CARS = [
   {
@@ -10,7 +10,7 @@ const CARS = [
     badge: "Flagship",
     description: "The pinnacle of automotive craftsmanship. 563 horsepower of serene power wrapped in hand-stitched leather and 44 lbs of sound-deadening material.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=800&q=80",
+    img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=400&q=60",
     color: "#c8a96e",
   },
   {
@@ -174,7 +174,7 @@ function App() {
             CARS.map((car) =>
             <div key={car.id} className="vehicle_card">
               <div className="vehicle_container">
-                <img className="vehicle_img" src={car.img} alt={car.name} />
+                <img className="vehicle_img" src={car.img} alt={car.name} loading="lazy" />
                 <div className="vehicle_description">
                   <h3 className="vehicle_name">{car.name}</h3>
                   <p className="vehicle_stats">{car.year} . {car.category}</p>
@@ -308,7 +308,7 @@ function App() {
               CARS.map((car) =>
               <div key={car.id} className="vehicle_card">
                 <div className="vehicle_container">
-                  <img className="vehicle_img" src={car.img} alt={car.name} />
+                  <img className="vehicle_img" src={car.img} alt={car.name} loading="lazy" />
                   <div className="vehicle_description">
                     <h3 className="vehicle_name">{car.name}</h3>
                     <p className="vehicle_stats">{car.year} . {car.category}</p>
@@ -407,18 +407,18 @@ function App() {
         </nav>
 
         {/* RESERVE CONSULTATION */}
-        <section>
+        <section className="reservation_section">
           {/* JOURNEY INTRO TEXT */}
-          <div>
+          <div className="reservation_intro_text_heading">
             <p className="supscript">GET IN TOUCH</p>
-            <h1 className="vehicles_heading title">Begin Your <span className="title_span">Journey</span></h1>
+            <h1 className="reservation_heading title">Begin Your <span className="title_span">Journey</span></h1>
           </div>
 
           {/* MAIN JOIN COMMUNITY CONTENT*/}
 
           <div className="join_content_container">
             <div className="address_info_container">
-              <h1>OUR OFFICES</h1>
+              <h1 className="address_title">OUR OFFICES</h1>
               {/* HEADQUARTERS */}
               <div>
                 <h1>MONACO HQ</h1>
@@ -453,22 +453,28 @@ function App() {
             <div className="reservation_form">
                 {/* INTRO TEXT */}
                 <div className="reservation_intro_text">
-                  <p className="supscript">PRIVATE ENQUIRY</p>
+                  <p className="supscript registration-supscript">PRIVATE ENQUIRY</p>
                   <h1 className="reservation_heading title">Reserve a Consultation</h1>
                 </div>
                 <form action="#">
-                  <label htmlFor="fullName">Full Name</label>
-                  <input type="text" name="fullName" />
-                  <label htmlFor="email">Email</label>
-                  <input type="email" name="email" />
-                  <label htmlFor="phone">PHONE</label>
-                  <input type="tel" name="phone" />
-                  <label htmlFor="interest">MODEL OF INTEREST</label>
-                  <select name="interest" id="interest">
+                  <div className="user_initials">
+                    <div>
+                      <label htmlFor="fullName">Full Name</label><br />
+                      <input type="text" name="fullName" placeholder="Your name" style={{width:"19.5rem"}} /><br />
+                    </div>
+                    <div>
+                      <label htmlFor="email">Email</label><br />
+                      <input type="email" name="email" placeholder="your@email.com" style={{width:"19.5rem"}} /><br />
+                    </div>
+                  </div>
+                  <label htmlFor="phone">PHONE</label><br />
+                  <input type="tel" name="phone" placeholder="+1 000 000 0000" /><br />
+                  <label htmlFor="interest">MODEL OF INTEREST</label><br />
+                  <select name="interest" id="interest"><br />
                     <option value="select">Select a Model</option>
-                  </select>
-                  <label htmlFor="message">MESSAGE</label>
-                  <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea>
+                  </select><br />
+                  <label htmlFor="message">MESSAGE</label><br />
+                  <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea><br />
                   <button>SUBMIT ENQUIRY</button>
                 </form>
             </div>
