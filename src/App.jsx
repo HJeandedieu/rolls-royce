@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
-  const CARS = [
+const CARS = [
   {
     id: 1,
     name: "Phantom",
@@ -90,9 +88,20 @@ const FOOTER_CONTENT = [
   {heading: "Company", links: ['Our Story', 'Bespoke', 'Certification', 'Press', 'Careers']},
   {heading: "Contact", links: ['Monaco Office', 'London Office', 'Private Enquiry', 'Concierge', 'FAQ']}
 ]
+
+function App() {
+  const [currentPage, setCurrentPage] = useState("home")
+
+  const navigate = (page) =>{
+    setCurrentPage(page);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
   return (
     <>
-    <main className="rolls-royce">
+    
+    {/* HOME PAGE */}
+    {currentPage === "home" && (<>
+    <main className="home-page">
       {/* NAVBAR */}
       <nav>
         {/* INTRO TEXT */}
@@ -101,10 +110,10 @@ const FOOTER_CONTENT = [
         </div>
         {/* NAVIGATION LINKS */}
         <div className="navigation-links">
-          <a href="#">HOME</a>
-          <a href="#">COLLECTION</a>
-          <a href="#">ABOUT</a>
-          <a href="#">CONTACT</a>
+          <button onClick= {() => navigate("home")}>HOME</button>
+          <button onClick= {() => navigate("collection")}>COLLECTION</button>
+          <button onClick= {() => navigate("about")}>ABOUT</button>
+          <button onClick= {() => navigate("contact")}>CONTACT</button>
         </div>
         {/* USER AUTH BUTTONS */}
         <div className="nav-buttons">
@@ -163,15 +172,17 @@ const FOOTER_CONTENT = [
         <div className="vehicles_container">
           {
             CARS.map((car) =>
-            <div key={car.id} className="vehicle_container">
-              <img className="vehicle_img" src={car.img} alt={car.name} />
-              <div className="vehicle_description">
-                <h3>{car.name}</h3>
-                <p>{car.year}.{car.category}</p>
-                <p className="vehicle_description">{car.description}</p>
-                <div>
-                  <span>{car.price}</span>
-                  <button className="vehicle_config_button">CONFIGURE</button>
+            <div key={car.id} className="vehicle_card">
+              <div className="vehicle_container">
+                <img className="vehicle_img" src={car.img} alt={car.name} />
+                <div className="vehicle_description">
+                  <h3 className="vehicle_name">{car.name}</h3>
+                  <p className="vehicle_stats">{car.year} . {car.category}</p>
+                  <p className="vehicle_description_text" hidden>{car.description}</p>
+                  <div className="vehicle-price-tag">
+                    <span className="vehicle_price">{car.price}</span>
+                    <button className="vehicle_config_button">CONFIGURE</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -190,7 +201,7 @@ const FOOTER_CONTENT = [
           <h2 className="title heritage_heading">Every Detail <br />Hand-Crafted</h2>
           <p className="heritage_paragraph">At Goodwood, over 2,000 skilled artisans spend an average of 450 hours crafting a single vehicle. From the 20-hide 
             leather interiors to hand-painted coachlines drawn in one breath. Perfection is not an aspiration, it is a standard.</p>
-            <button class="heritage_button">DISCOVER OUR HERITAGE</button>
+            <button className="heritage_button">DISCOVER OUR HERITAGE</button>
         </div>
       </section>
 
@@ -201,7 +212,7 @@ const FOOTER_CONTENT = [
         <div className="testimonials_container">
         {
           TESTIMONIALS.map((t, i) =>(
-            <div className="testimonial-card">
+            <div key={i} className="testimonial-card">
               <div className="testimonial-stars">
                 {[...Array(t.rating)].map((_, si) => <span key={si} className="star">★</span>)}
               </div>
@@ -250,6 +261,245 @@ const FOOTER_CONTENT = [
         <p>Monaco · London · Dubai · Singapore</p>
       </div>
     </footer>
+    </>)}
+
+
+    {/* COLLECTION PAGE */}
+    {currentPage === "collection" && (
+      <>
+      <main className="collection-page">
+        {/* NAVBAR */}
+        <nav>
+          {/* INTRO TEXT */}
+          <div className="navigation-intro-text">
+            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
+          </div>
+          {/* NAVIGATION LINKS */}
+          <div className="navigation-links">
+            <button onClick= {() => navigate("home")}>HOME</button>
+            <button onClick= {() => navigate("collection")}>COLLECTION</button>
+            <button onClick= {() => navigate("about")}>ABOUT</button>
+            <button onClick= {() => navigate("contact")}>CONTACT</button>
+          </div>
+          {/* USER AUTH BUTTONS */}
+          <div className="nav-buttons">
+            <button className="login nav-button">LOGIN</button>
+            <button className="signup nav-button">SIGN UP</button>
+          </div>
+        </nav>
+
+        {/* VEHICLES */}
+        <section className="vehicles_section">
+          {/* VEHICLES INTRO TEXT */}
+          <div>
+            <p className="supscript">FULL COLLECTION</p>
+            <h1 className="vehicles_heading title">Every <span className="title_span">Masterpiece</span></h1>
+          </div>
+          <div className="categories_buttons_container">
+            {
+              CATEGORIES.map(category => 
+                <button key={category} className="category_button">{category}</button>
+              )
+            }
+          </div>
+          {/* VEHICLE CATEGORIZATION TABS */}
+          <div className="vehicles_container">
+            {
+              CARS.map((car) =>
+              <div key={car.id} className="vehicle_card">
+                <div className="vehicle_container">
+                  <img className="vehicle_img" src={car.img} alt={car.name} />
+                  <div className="vehicle_description">
+                    <h3 className="vehicle_name">{car.name}</h3>
+                    <p className="vehicle_stats">{car.year} . {car.category}</p>
+                    <p className="vehicle_description_text" hidden>{car.description}</p>
+                    <div className="vehicle-price-tag">
+                      <span className="vehicle_price">{car.price}</span>
+                      <button className="vehicle_config_button">CONFIGURE</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              )
+            }
+          </div>
+        </section>
+      </main>
+      {/* FOOTER CONTENT */}
+      <footer>
+        <div className="footer-container">
+          <div>
+            <h2 className="footer-heading title">Red<span>Blue</span> Rolls</h2>
+            <p className="footer-text">The world's most exclusive Rolls-Royce <br />acquisition service. Private. Precise. Perfection.</p>
+          </div>
+            
+          {FOOTER_CONTENT.map((content, index)=>
+            <div key={index} className="footer-content">
+              <h1 className="footer-content-heading">{content.heading}</h1>
+              <div className="footer-links">{content.links.map((element, index)=>(
+                <p className="footer-link" key={index}>{element}</p>
+              ))}
+            </div>
+            </div>
+          )}
+          </div>
+        <div className="footer-bottom">
+          <p>&copy; 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
+          <p>Monaco · London · Dubai · Singapore</p>
+        </div>
+      </footer>
+      </>
+    )}
+
+    {/* ABOUT PAGE */}
+    {currentPage === "about" && (
+      <>
+      <main className="about-page">
+        {/* NAVBAR */}
+        <nav>
+          {/* INTRO TEXT */}
+          <div className="navigation-intro-text">
+            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
+          </div>
+          {/* NAVIGATION LINKS */}
+          <div className="navigation-links">
+            <button onClick= {() => navigate("home")}>HOME</button>
+            <button onClick= {() => navigate("collection")}>COLLECTION</button>
+            <button onClick= {() => navigate("about")}>ABOUT</button>
+            <button onClick= {() => navigate("contact")}>CONTACT</button>
+          </div>
+          {/* USER AUTH BUTTONS */}
+          <div className="nav-buttons">
+            <button className="login nav-button">LOGIN</button>
+            <button className="signup nav-button">SIGN UP</button>
+          </div>
+        </nav>
+        <section>
+          <h1 className="about-heading">Page Content unavailable at the moment</h1>
+        </section>
+      </main>
+      </>
+    )}
+
+
+    {/* CONTACT PAGE */}
+    {currentPage === "contact" && (
+      <>
+      <main className="contact-page">
+        {/* NAVBAR */}
+        <nav>
+          {/* INTRO TEXT */}
+          <div className="navigation-intro-text">
+            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
+          </div>
+          {/* NAVIGATION LINKS */}
+          <div className="navigation-links">
+            <button onClick= {() => navigate("home")}>HOME</button>
+            <button onClick= {() => navigate("collection")}>COLLECTION</button>
+            <button onClick= {() => navigate("about")}>ABOUT</button>
+            <button onClick= {() => navigate("contact")}>CONTACT</button>
+          </div>
+          {/* USER AUTH BUTTONS */}
+          <div className="nav-buttons">
+            <button className="login nav-button">LOGIN</button>
+            <button className="signup nav-button">SIGN UP</button>
+          </div>
+        </nav>
+
+        {/* RESERVE CONSULTATION */}
+        <section>
+          {/* JOURNEY INTRO TEXT */}
+          <div>
+            <p className="supscript">GET IN TOUCH</p>
+            <h1 className="vehicles_heading title">Begin Your <span className="title_span">Journey</span></h1>
+          </div>
+
+          {/* MAIN JOIN COMMUNITY CONTENT*/}
+
+          <div className="join_content_container">
+            <div className="address_info_container">
+              <h1>OUR OFFICES</h1>
+              {/* HEADQUARTERS */}
+              <div>
+                <h1>MONACO HQ</h1>
+                <p>Villa Royale, Avenue Princesse Grace</p>
+                <p>Monte-Carlo, MC 98000</p>
+              </div>
+              {/* BRANCHES */}
+              <div>
+                <h1>LONDON</h1>
+                <p>45 Park Lane, Mayfair</p>
+                <p>London, W1K 1PN</p>
+              </div>
+              {/* PHONE CONTACT */}
+              <div>
+                <h1>PHONE</h1>
+                <p>+377 99 99 9000</p>
+              </div>
+              {/* EMAIL ADDRESS */}
+              <div>
+                <h1>EMAIL</h1>
+                <p>private@redbluerolls.com</p>
+              </div>
+              {/* WORKING HOURS */}
+              <div>
+                <h1>HOURS</h1>
+                <p>Monday-Saturday</p>
+                <p>9:00 AM – 8:00 PM CET</p>
+              </div>
+            </div>
+
+            {/* REGISTRATION FORM */}
+            <div className="reservation_form">
+                {/* INTRO TEXT */}
+                <div className="reservation_intro_text">
+                  <p className="supscript">PRIVATE ENQUIRY</p>
+                  <h1 className="reservation_heading title">Reserve a Consultation</h1>
+                </div>
+                <form action="#">
+                  <label htmlFor="fullName">Full Name</label>
+                  <input type="text" name="fullName" />
+                  <label htmlFor="email">Email</label>
+                  <input type="email" name="email" />
+                  <label htmlFor="phone">PHONE</label>
+                  <input type="tel" name="phone" />
+                  <label htmlFor="interest">MODEL OF INTEREST</label>
+                  <select name="interest" id="interest">
+                    <option value="select">Select a Model</option>
+                  </select>
+                  <label htmlFor="message">MESSAGE</label>
+                  <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea>
+                  <button>SUBMIT ENQUIRY</button>
+                </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER CONTENT */}
+      <footer>
+        <div className="footer-container">
+          <div>
+            <h2 className="footer-heading title">Red<span>Blue</span> Rolls</h2>
+            <p className="footer-text">The world's most exclusive Rolls-Royce <br />acquisition service. Private. Precise. Perfection.</p>
+          </div>
+
+          {FOOTER_CONTENT.map((content, index)=>
+          <div key={index} className="footer-content">
+          <h1 className="footer-content-heading">{content.heading}</h1>
+          <div className="footer-links">{content.links.map((element, index)=>(
+            <p className="footer-link" key={index}>{element}</p>
+          ))}</div>
+          </div>
+          )}
+          </div>
+        <div className="footer-bottom">
+          <p>© 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
+          <p>Monaco · London · Dubai · Singapore</p>
+        </div>
+      </footer>
+      </>
+    )}
     </>
   )
 }
