@@ -449,3 +449,117 @@ span{
   font-family:var(--font-display);
   color: var(--muted);
 }
+
+
+
+/* CONTACT PAGE */
+
+.reservation_section{
+  padding:2rem;
+}
+
+.reservation_heading{
+  font-size: 6rem;
+  padding:1rem 0rem;
+}
+
+.reservation_intro_text_heading{
+  padding-top:5rem;
+  padding-bottom:3rem;
+}
+
+.join_content_container{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  background-color:rgb(24,26,30);
+}
+
+.address_info_container{
+  background-color:rgb(34,37,43);
+  padding: 3rem 2rem;
+}
+
+.address_title{
+  font-weight:300;
+  padding-bottom:2rem;
+}
+
+.addres_info_container div{
+  padding: 1rem 0rem;
+}
+
+.address_info_container h1{
+  font-size:.75rem;
+  color: var(--gold);
+}
+
+.address_info_container p{
+  font-size:.9rem;
+  font-weight:200;
+  color:var(--muted)
+}
+
+/* RESERVATION FORM */
+
+.reservation_heading{
+  line-height:0rem;
+  font-size:2rem;
+}
+
+.reservation_intro_text{
+  margin-bottom:2rem;
+  margin-top:2rem;
+}
+
+.user_initials{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  width:100%
+}
+
+.reservation_form input::placeholder{
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+.reservation_form input, select,textarea{
+  background-color:rgb(33,35,39);
+  border: 1px solid rgb(63,58,49);
+  color:var(--muted);
+  padding:.7rem .5rem;
+  margin:.5rem 0rem;
+  width:40rem;
+  box-sizing: border-box;
+}
+
+.reservation_form textarea{
+  font-family:inherit;
+}
+
+.reservation_form label{
+  color:var(--gold-dark);
+  font-size:.75rem;
+  padding:.5rem 0rem;
+  line-height:0rem;
+  display:block
+}
+
+.reservation_form button{
+  background-color:var(--gold);
+  color:black;
+  border:none;
+  width:40rem;
+}
+
+.reservation_form{
+  padding:3rem 2rem;
+}
+
+.registration-supscript{
+  font-size:.7rem;
+}
+
+.registration_heading{
+  padding: 2rem 0rem;
+}
