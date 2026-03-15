@@ -67,7 +67,7 @@ span{
 .navigation-links button::after{
   content:"";
   position:absolute;
-  bottom: -2px;
+  bottom: 0;
   left:0;
   width:0;
   height: 1px;
@@ -171,6 +171,28 @@ span{
 
 
 /* INFINITI CAROUSEL*/
+
+.marquee-section{
+  overflow:hidden;
+  padding:2rem 0;
+  background-color: var(--gold);
+}
+
+.marquee-track{
+  display: flex;
+  gap: 10rem;
+  width:max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-item{
+  color:black;
+}
+
+@keyframes marquee{
+  from {transform: translateX(0);}
+  to { transform: translateX(-50%);}
+}
 
 /* VEHICLES */
 

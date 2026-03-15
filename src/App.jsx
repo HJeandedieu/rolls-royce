@@ -152,7 +152,17 @@ function App() {
       </section>
 
       {/* INFINITE CAROUSEL */}
-      <section></section>
+      <section className="marquee-section">
+        <div className="marquee-track">
+        {[...Array(2)].flatMap(()=>
+        ["Phantom", "Ghost", "Wraith", "Dawn", "Cullinan", "Spectre"].map(name =>(
+          <span key={name + Math.random()} className="marquee-item">
+            {name} <span className="marquee-dot" />
+          </span>
+        ))
+        )}
+        </div>
+      </section>
 
       {/* VEHICLES */}
       <section className="vehicles_section">
@@ -470,7 +480,7 @@ function App() {
                   <label htmlFor="phone">PHONE</label><br />
                   <input type="tel" name="phone" placeholder="+1 000 000 0000" /><br />
                   <label htmlFor="interest">MODEL OF INTEREST</label><br />
-                  <select name="interest" id="interest"><br />
+                  <select name="interest" id="interest">
                     <option value="select">Select a Model</option>
                   </select><br />
                   <label htmlFor="message">MESSAGE</label><br />
