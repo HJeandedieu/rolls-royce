@@ -156,9 +156,12 @@ function App() {
         <div className="marquee-track">
         {[...Array(2)].flatMap(()=>
         ["Phantom", "Ghost", "Wraith", "Dawn", "Cullinan", "Spectre"].map(name =>(
+          <>
           <span key={name + Math.random()} className="marquee-item">
-            {name} <span className="marquee-dot" />
+            {name}
           </span>
+           <span className="marquee-dot" />
+          </>
         ))
         )}
         </div>
@@ -193,6 +196,9 @@ function App() {
                     <span className="vehicle_price">{car.price}</span>
                     <button className="vehicle_config_button">CONFIGURE</button>
                   </div>
+                </div>
+                <div className="vehicle_badge">
+                  <button>{car.badge}</button>
                 </div>
               </div>
             </div>
