@@ -300,15 +300,15 @@ function App() {
         <Navbar currentPage={currentPage} navigate={navigate} />
       
         {/* INTRO_TEXT */}
-        <section>
+        <section className="about_intro_text">
           <p className="supscript">OUR STORY</p>
           <h1 className="title about_heading">RedBlue Rolls</h1>
         </section>
         
         {/* MISSION */}
-        <section>
+        <section className="about_mission">
           <p className="supscript">OUR MISSION</p>
-          <h1 className="title mission_heading">A <span>Different</span> Standard</h1>
+          <h1 className="title mission_heading">A <span className="mission_span">Different</span> Standard</h1>
           <p className="mission_paragraph">RedBlue Rolls was founded with a singular conviction: that acquiring
              a Rolls-Royce should be as extraordinary as owning one. We are not a dealership. We are a curation 
              house.</p>
@@ -318,15 +318,15 @@ function App() {
             conversation to final delivery.
           </p>
         </section>
-        <section>
+        <section className="about_heritage_section">
           {/* HERITAGE INTRO TEX */}
             <div className="about_heritage_container">
               <p className="supscript">TIMELINE</p>
-              <h1 className="title about_heritage_heading">Our <span>Heritage</span></h1>
+              <h1 className="title about_heritage_heading">Our <span className="about_heritage_span">Heritage</span></h1>
             </div>
 
             {/* TIMELINE */}
-            <div>
+            <div className="timeline_container">
               {[
                 { year: "2010", title: "Founded in Monaco", desc: "RedBlue Rolls begins as a private acquisition service for UHNW clients in the South of France." },
                 { year: "2014", title: "Official Rolls-Royce Partnership", desc: "A formal alliance with the Goodwood factory establishes direct access to bespoke commissions." },
@@ -336,11 +336,14 @@ function App() {
               ].map((item, index) => (
                 <>
                   <div className="event" key={index}>
-                    <span className="event_year">{item.year}</span>
-                    <span className="event_dot">.</span>
+                    <div className="event-year">
+                      <p className="flex_para">
+                      <span className="event_year">{item.year}</span>
+                      <span className="event_dot">.</span></p>
+                    </div>
                     <div>
-                      <h1>{item.title}</h1>
-                      <p>{item.desc}</p>
+                      <h3 className="event_title">{item.title}</h3>
+                      <p className="event_desc">{item.desc}</p>
                     </div>
                   </div>
                 </>
@@ -351,12 +354,15 @@ function App() {
 
         {/* STATS SECTION */}
         <section>
-          <div>
+          <div className="about_vehicle_stats">
             {
-            [["120+", "Vehicles Delivered"], ["15", "Years of Excellence"], ["40+", "Countries Served"], ["100%", "Satisfaction Rate"]].map((item, i)=>(
+            [{stats:"120+", content:"Vehicles Delivered"}, 
+              {stats:"15", content:"Years of Excellence"},
+               {stats:"40+", content:"Countries Served"},
+                {stats:"100%", content:"Satisfaction Rate"}].map((item, i)=>(
               <div className="stats_container" key={i}>
-                <p className="stats_numerical">{item}</p>
-                <p className="stats_text">{i}</p>
+                <p className="stats_numerical">{item['stats']}</p>
+                <p className="stats_text">{item['content']}</p>
               </div>
             ))
             }
