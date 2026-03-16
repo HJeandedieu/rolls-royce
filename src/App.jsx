@@ -1,5 +1,8 @@
-import { useState } from 'react'
-import Login from "./components/login.jsx"
+import { useState } from 'react';
+
+import Navbar from "./components/navbar.jsx";
+import Login from "./components/login.jsx";
+import Signup from "./components/signup.jsx";
 
 const CARS = [
   {
@@ -91,12 +94,13 @@ const FOOTER_CONTENT = [
 ]
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home")
+  const [currentPage, setCurrentPage] = useState("home");
 
   const navigate = (page) =>{
     setCurrentPage(page);
     window.scrollTo({top:0, behavior:"smooth"});
   }
+
   return (
     <>
     
@@ -104,25 +108,7 @@ function App() {
     {currentPage === "home" && (<>
     <main className="home-page">
       {/* NAVBAR */}
-      <nav>
-        {/* INTRO TEXT */}
-        <div className="navigation-intro-text">
-          <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
-        </div>
-        {/* NAVIGATION LINKS */}
-        <div className="navigation-links">
-          <button onClick= {() => navigate("home")}>HOME</button>
-          <button onClick= {() => navigate("collection")}>COLLECTION</button>
-          <button onClick= {() => navigate("about")}>ABOUT</button>
-          <button onClick= {() => navigate("contact")}>CONTACT</button>
-        </div>
-        {/* USER AUTH BUTTONS */}
-        <div className="nav-buttons">
-          <button className="login nav-button">LOGIN</button>
-          <button className="signup nav-button">SIGN UP</button>
-        </div>
-      </nav>
-      
+      <Navbar currentPage={currentPage} navigate={navigate} />
       {/* MAIN CONTENT INTRO TEXT */}
       <section className="main_text">
         <p className="main_text supscript">Est. 1904 · Goodwood, England</p>
@@ -286,24 +272,7 @@ function App() {
       <>
       <main className="collection-page">
         {/* NAVBAR */}
-        <nav>
-          {/* INTRO TEXT */}
-          <div className="navigation-intro-text">
-            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
-          </div>
-          {/* NAVIGATION LINKS */}
-          <div className="navigation-links">
-            <button onClick= {() => navigate("home")}>HOME</button>
-            <button onClick= {() => navigate("collection")}>COLLECTION</button>
-            <button onClick= {() => navigate("about")}>ABOUT</button>
-            <button onClick= {() => navigate("contact")}>CONTACT</button>
-          </div>
-          {/* USER AUTH BUTTONS */}
-          <div className="nav-buttons">
-            <button className="login nav-button">LOGIN</button>
-            <button className="signup nav-button">SIGN UP</button>
-          </div>
-        </nav>
+        <Navbar currentPage={currentPage} navigate={navigate} />
 
         {/* VEHICLES */}
         <section className="vehicles_section">
@@ -373,24 +342,8 @@ function App() {
       <>
       <main className="about-page">
         {/* NAVBAR */}
-        <nav>
-          {/* INTRO TEXT */}
-          <div className="navigation-intro-text">
-            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
-          </div>
-          {/* NAVIGATION LINKS */}
-          <div className="navigation-links">
-            <button onClick= {() => navigate("home")}>HOME</button>
-            <button onClick= {() => navigate("collection")}>COLLECTION</button>
-            <button onClick= {() => navigate("about")}>ABOUT</button>
-            <button onClick= {() => navigate("contact")}>CONTACT</button>
-          </div>
-          {/* USER AUTH BUTTONS */}
-          <div className="nav-buttons">
-            <button className="login nav-button">LOGIN</button>
-            <button className="signup nav-button">SIGN UP</button>
-          </div>
-        </nav>
+        <Navbar currentPage={currentPage} navigate={navigate} />
+
         <section>
           <h1 className="about-heading">Page Content unavailable at the moment</h1>
         </section>
@@ -404,24 +357,7 @@ function App() {
       <>
       <main className="contact-page">
         {/* NAVBAR */}
-        <nav>
-          {/* INTRO TEXT */}
-          <div className="navigation-intro-text">
-            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
-          </div>
-          {/* NAVIGATION LINKS */}
-          <div className="navigation-links">
-            <button onClick= {() => navigate("home")}>HOME</button>
-            <button onClick= {() => navigate("collection")}>COLLECTION</button>
-            <button onClick= {() => navigate("about")}>ABOUT</button>
-            <button onClick= {() => navigate("contact")}>CONTACT</button>
-          </div>
-          {/* USER AUTH BUTTONS */}
-          <div className="nav-buttons">
-            <button className="login nav-button">LOGIN</button>
-            <button className="signup nav-button">SIGN UP</button>
-          </div>
-        </nav>
+        <Navbar currentPage={currentPage} navigate={navigate} />
 
         {/* RESERVE CONSULTATION */}
         <section className="reservation_section">
@@ -525,7 +461,17 @@ function App() {
     )}
 
     {currentPage === "login" &&(
-      <Login />
+      <>
+        <Navbar currentPage={currentPage} navigate={navigate} />
+        <Login />
+      </>
+    )}
+
+    {currentPage === "signup" &&(
+      <>
+        <Navbar currentPage={currentPage} navigate={navigate} />
+        <Signup />
+      </>
     )}
     </>
   )

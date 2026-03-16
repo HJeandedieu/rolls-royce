@@ -88,6 +88,7 @@ span{
 .nav-button{
   padding:0.5rem 2rem;
   margin-left:1rem;
+  cursor:pointer;
 }
 
 .login{
@@ -649,4 +650,86 @@ span{
 
 .registration_heading{
   padding: 2rem 0rem;
+}
+
+/* LOGIN PAGE */
+.login_container{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  background-color:rgb(24,26,30);
+  border: 1px solid rgb(52,48,40);
+  padding:2rem;
+  width:fit-content;
+  margin:5rem auto;
+}
+
+.login_heading{
+  font-size:3rem;
+  color:var(--white);
+  line-height:0rem;
+}
+
+.login_heading_container{
+  display:flex;
+  justify-content:space-between;
+}
+
+.login_paragraph{
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+.login_close_button{
+  align-self:flex-start;
+  background-color:transparent;
+  border: 1px solid rgb(64,66,69);
+  color:white;
+}
+
+.login_container input, label, button{
+  font-family:inherit;
+}
+
+.login_container label{
+  text-transform:uppercase;
+  color:var(--gold);
+  font-size:.7rem;
+  font-weight:500;
+  letter-spacing:.06rem;
+}
+
+.login_container input{
+  background-color:rgb(33,35,39);
+  border:1px solid rgb(59,55,48);
+  padding:.6rem 0rem;
+  padding-left:.7rem;
+  margin:.5rem 0rem;
+  width:24.3rem;
+}
+
+.login_container input::placeholder{
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+
+.login_container form button{
+  background-color:var(--gold);
+  border:none;
+  width:25rem;
+  margin:2rem 0rem;
+  padding:.7rem;
+  font-size:.8rem;
+  font-weight:600;
+}
+
+.no-account-text{
+  text-align:center;
+  font-size:.8rem;
+  color:var(--muted);
+}
+
+.signup-link{
+  color:var(--gold)
 }
