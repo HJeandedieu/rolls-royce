@@ -21,7 +21,18 @@
     font-size:inherit;
   }
 
-body {font-family: var(--font-body); background-color:rgb(11,11,11); color: var(--white); overflow-x: hidden;}
+body {
+  font-family: var(--font-body);
+  background-color:rgb(11,11,11);
+  color: var(--white);
+  overflow-x: hidden;
+  padding:0;
+  margin:0;
+}
+body::selection{
+  background-color:var(--muted);
+  color:black;
+}
 
 /* NAVBAR STYLES */
 nav{
@@ -460,6 +471,7 @@ span{
   border: 1px solid var(--gold);
   background-color:rgb(44,46,49);
   width:20%;
+  color:var(--muted)
 }
 
 .join-form input::placeholder{
@@ -661,7 +673,7 @@ span{
   border: 1px solid rgb(52,48,40);
   padding:2rem;
   width:fit-content;
-  margin:5rem auto;
+  margin:3.5rem auto;
 }
 
 .login_heading{
@@ -685,6 +697,7 @@ span{
   background-color:transparent;
   border: 1px solid rgb(64,66,69);
   color:white;
+  cursor:pointer;
 }
 
 .login_container input, label, button{
@@ -732,4 +745,124 @@ span{
 
 .signup-link{
   color:var(--gold)
+}
+
+/* ABOUT CONTENT */
+
+.about_intro_text{
+  background-color:var(--black);
+  text-align:center;
+  padding:5rem 0rem;
+}
+
+.about_mission{
+  background-color:rgb(17,18,20);
+  padding:5rem 0rem;
+  text-align:center;
+}
+
+.mission_heading{
+  font-size:3.5rem;
+}
+
+.mission_paragraph{
+  width:50%;
+  margin:0 auto;
+  text-align:center;
+  padding:.7rem 0rem;
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+.mission_span{
+  font-style:italic;
+}
+
+.about_heritage_section{
+  background-color:var(--dark2);
+}
+
+.about_heritage_container{
+  text-align:center;
+  padding: 5rem 0rem;
+}
+
+.about_heritage_heading{
+  font-size:4rem;
+}
+
+.about_heritage_span{
+  font-style:italic;
+}
+
+.timeline_container{
+  width:fit-content;
+  margin:0 auto;
+  padding:0rem 9rem;
+  padding-bottom:6rem;
+}
+
+.event{
+  display:flex;
+  align-items:center;
+  padding: 1rem 0rem;
+}
+
+.event-year{
+  display:flex;
+  gap:2rem;
+}
+
+.event_dot{
+  font-size:6rem;
+  line-height:0rem;
+}
+
+.event_year{
+  padding-right:1.5rem;
+  font-size:.8rem;
+  font-weight:200;
+}
+
+.event_dot{
+  padding-right:1.5rem;
+}
+
+.event_title{
+  font-size:1rem;
+}
+
+.event_desc{
+  color:var(--muted);
+  font-size:.85rem;
+  width:90%;
+}
+
+.about_vehicle_stats{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  background-color:rgb(17,18,20);
+}
+
+
+.stats_container{
+  background-color:rgb(34,37,43);
+  padding: 3rem 6rem;
+  margin:5rem 0rem;
+  display:flex;
+  flex-direction:column;
+}
+
+.stats_numerical{
+  font-family:var(--font-display);
+  color:var(--gold);
+  font-size:3rem;
+  line-height:0rem;
+  text-align:center;
+}
+
+.stats_text{
+  text-transform:uppercase;
+  font-weight:700;
 }
