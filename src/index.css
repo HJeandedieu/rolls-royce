@@ -22,6 +22,10 @@
   }
 
 body {font-family: var(--font-body); background-color:rgb(11,11,11); color: var(--white); overflow-x: hidden;}
+body::selection{
+  background-color:var(--muted);
+  color:black;
+}
 
 /* NAVBAR STYLES */
 nav{
@@ -460,6 +464,7 @@ span{
   border: 1px solid var(--gold);
   background-color:rgb(44,46,49);
   width:20%;
+  color:var(--muted)
 }
 
 .join-form input::placeholder{
@@ -685,6 +690,7 @@ span{
   background-color:transparent;
   border: 1px solid rgb(64,66,69);
   color:white;
+  cursor:pointer;
 }
 
 .login_container input, label, button{

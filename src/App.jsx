@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from "./components/navbar.jsx";
 import Login from "./components/login.jsx";
 import Signup from "./components/signup.jsx";
+import Footer from "./components/footer.jsx";
 
 const CARS = [
   {
@@ -87,11 +88,6 @@ const TESTIMONIALS = [
 
 const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
 
-const FOOTER_CONTENT = [
-  {heading:"collection", links: ['All Models', 'Phantom', 'Ghost', 'Cullinan', 'Wraith', 'Spectre']},
-  {heading: "Company", links: ['Our Story', 'Bespoke', 'Certification', 'Press', 'Careers']},
-  {heading: "Contact", links: ['Monaco Office', 'London Office', 'Private Enquiry', 'Concierge', 'FAQ']}
-]
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -243,27 +239,7 @@ function App() {
           </div>
       </section>
     </main>
-    <footer>
-      <div className="footer-container">
-        <div>
-          <h2 className="footer-heading title">Red<span>Blue</span> Rolls</h2>
-          <p className="footer-text">The world's most exclusive Rolls-Royce <br />acquisition service. Private. Precise. Perfection.</p>
-        </div>
-        
-        {FOOTER_CONTENT.map((content, index)=>
-        <div key={index} className="footer-content">
-        <h1 className="footer-content-heading">{content.heading}</h1>
-        <div className="footer-links">{content.links.map((element, index)=>(
-          <p className="footer-link" key={index}>{element}</p>
-        ))}</div>
-        </div>
-        )}
-        </div>
-      <div className="footer-bottom">
-        <p>© 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
-        <p>Monaco · London · Dubai · Singapore</p>
-      </div>
-    </footer>
+    <Footer />
     </>)}
 
 
@@ -312,28 +288,7 @@ function App() {
         </section>
       </main>
       {/* FOOTER CONTENT */}
-      <footer>
-        <div className="footer-container">
-          <div>
-            <h2 className="footer-heading title">Red<span>Blue</span> Rolls</h2>
-            <p className="footer-text">The world's most exclusive Rolls-Royce <br />acquisition service. Private. Precise. Perfection.</p>
-          </div>
-            
-          {FOOTER_CONTENT.map((content, index)=>
-            <div key={index} className="footer-content">
-              <h1 className="footer-content-heading">{content.heading}</h1>
-              <div className="footer-links">{content.links.map((element, index)=>(
-                <p className="footer-link" key={index}>{element}</p>
-              ))}
-            </div>
-            </div>
-          )}
-          </div>
-        <div className="footer-bottom">
-          <p>&copy; 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
-          <p>Monaco · London · Dubai · Singapore</p>
-        </div>
-      </footer>
+      <Footer />
       </>
     )}
 
@@ -343,11 +298,72 @@ function App() {
       <main className="about-page">
         {/* NAVBAR */}
         <Navbar currentPage={currentPage} navigate={navigate} />
-
+      
+        {/* INTRO_TEXT */}
         <section>
-          <h1 className="about-heading">Page Content unavailable at the moment</h1>
+          <p className="supscript">OUR STORY</p>
+          <h1 className="title about_heading">RedBlue Rolls</h1>
+        </section>
+        
+        {/* MISSION */}
+        <section>
+          <p className="supscript">OUR MISSION</p>
+          <h1 className="title mission_heading">A <span>Different</span> Standard</h1>
+          <p className="mission_paragraph">RedBlue Rolls was founded with a singular conviction: that acquiring
+             a Rolls-Royce should be as extraordinary as owning one. We are not a dealership. We are a curation 
+             house.</p>
+          <p className="mission_paragraph">
+            Each vehicle in our collection is personally inspected, certified, and presented. Each client is 
+            assigned a dedicated acquisition specialist who remains their personal contact from first 
+            conversation to final delivery.
+          </p>
+        </section>
+        <section>
+          {/* HERITAGE INTRO TEX */}
+            <div className="about_heritage_container">
+              <p className="supscript">TIMELINE</p>
+              <h1 className="title about_heritage_heading">Our <span>Heritage</span></h1>
+            </div>
+
+            {/* TIMELINE */}
+            <div>
+              {[
+                { year: "2010", title: "Founded in Monaco", desc: "RedBlue Rolls begins as a private acquisition service for UHNW clients in the South of France." },
+                { year: "2014", title: "Official Rolls-Royce Partnership", desc: "A formal alliance with the Goodwood factory establishes direct access to bespoke commissions." },
+                { year: "2018", title: "Global Expansion", desc: "Offices open in London, Dubai, and Singapore. Client base grows to 400+ ultra-high-net-worth individuals." },
+                { year: "2022", title: "Digital Launch", desc: "The RedBlue Rolls online platform debuts, bringing white-glove service to a digital-first audience." },
+                { year: "2024", title: "Record Year", desc: "Over 120 bespoke Rolls-Royce vehicles delivered worldwide. 100% client satisfaction rating maintained." },
+              ].map((item, index) => (
+                <>
+                  <div className="event" key={index}>
+                    <span className="event_year">{item.year}</span>
+                    <span className="event_dot">.</span>
+                    <div>
+                      <h1>{item.title}</h1>
+                      <p>{item.desc}</p>
+                    </div>
+                  </div>
+                </>
+              ))
+              }
+            </div>
+        </section>
+
+        {/* STATS SECTION */}
+        <section>
+          <div>
+            {
+            [["120+", "Vehicles Delivered"], ["15", "Years of Excellence"], ["40+", "Countries Served"], ["100%", "Satisfaction Rate"]].map((item, i)=>(
+              <div className="stats_container" key={i}>
+                <p className="stats_numerical">{item}</p>
+                <p className="stats_text">{i}</p>
+              </div>
+            ))
+            }
+          </div>
         </section>
       </main>
+      <Footer />
       </>
     )}
 
@@ -436,27 +452,7 @@ function App() {
       </main>
 
       {/* FOOTER CONTENT */}
-      <footer>
-        <div className="footer-container">
-          <div>
-            <h2 className="footer-heading title">Red<span>Blue</span> Rolls</h2>
-            <p className="footer-text">The world's most exclusive Rolls-Royce <br />acquisition service. Private. Precise. Perfection.</p>
-          </div>
-
-          {FOOTER_CONTENT.map((content, index)=>
-          <div key={index} className="footer-content">
-          <h1 className="footer-content-heading">{content.heading}</h1>
-          <div className="footer-links">{content.links.map((element, index)=>(
-            <p className="footer-link" key={index}>{element}</p>
-          ))}</div>
-          </div>
-          )}
-          </div>
-        <div className="footer-bottom">
-          <p>© 2024 RedBlue Rolls. All rights reserved. Not affiliated with Rolls-Royce Motor Cars Ltd.</p>
-          <p>Monaco · London · Dubai · Singapore</p>
-        </div>
-      </footer>
+      <Footer />
       </>
     )}
 
