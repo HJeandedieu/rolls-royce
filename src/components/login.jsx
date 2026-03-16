@@ -6,6 +6,7 @@ function Login(){
             <h1>Welcome Back</h1>
             <p>Access your private collection and consultations.</p>
         </div>
+        <button>✕</button>
         {/* LOGIN FORM */}
         <form action="#">
             <label htmlFor="email">EMAIL</label>
