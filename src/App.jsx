@@ -15,7 +15,7 @@ const CARS = [
     badge: "Flagship",
     description: "The pinnacle of automotive craftsmanship. 563 horsepower of serene power wrapped in hand-stitched leather and 44 lbs of sound-deadening material.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=800&q=80",
+    img: "/home/phantom.jpg",
     color: "#c8a96e",
   },
   {
@@ -27,7 +27,7 @@ const CARS = [
     badge: "Best Seller",
     description: "Post Opulence. A whisper of power, a cathedral of calm. The Ghost redefines what a modern luxury sedan can be.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80",
+    img: "/home/ghost.jpg",
     color: "#9ea8b3",
   },
   {
@@ -39,7 +39,7 @@ const CARS = [
     badge: "New",
     description: "Effortless everywhere. The world's only true super-luxury SUV, hand-built at Goodwood for those who refuse compromise.",
     specs: { engine: "6.75L V12", power: "563 HP", torque: "850 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80",
+    img: "/home/cullinan.jpg",
     color: "#3d5a4e",
   },
   {
@@ -51,7 +51,7 @@ const CARS = [
     badge: "Limited",
     description: "The most powerful Rolls-Royce ever built. A grand tourer that draws power from the stars — its panoramic Starlight Headliner a testament.",
     specs: { engine: "6.6L V12", power: "624 HP", torque: "820 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
+    img: "/home/wraith.jpg",
     color: "#6b4226",
   },
   {
@@ -63,7 +63,7 @@ const CARS = [
     badge: "Exclusive",
     description: "Open air perfection. The Dawn takes 22 seconds to lower its roof — each second a ceremony of transformation.",
     specs: { engine: "6.6L V12", power: "563 HP", torque: "820 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+    img: "/home/dawn.jpg",
     color: "#c4a882",
   },
   {
@@ -75,7 +75,7 @@ const CARS = [
     badge: "Electric",
     description: "The first fully electric Rolls-Royce. 585 horsepower of silent, instant torque. The future of effortless luxury.",
     specs: { engine: "Dual Motor EV", power: "585 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80",
+    img: "/home/spectre.jpg",
     color: "#2d3a4a",
   },
 ]
@@ -91,6 +91,11 @@ const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [active, setActive] = useState("All");
+
+  const handleActive = (category)=>{
+    setActive(category);
+  }
 
   const navigate = (page) =>{
     setCurrentPage(page);
@@ -160,7 +165,15 @@ function App() {
         <div className="categories_buttons_container">
           {
             CATEGORIES.map(category => 
-              <button key={category} className="category_button">{category}</button>
+              <button 
+                key={category} 
+                className="category_button"
+                onClick={() => handleActive(category)}
+                style={{
+                  backgroundColor: active === category ? "#b8965a" : "transparent",
+                  color: active === category ? "black" : "white"
+                }}
+              >{category}</button>
             )
           }
         </div>
@@ -360,7 +373,7 @@ function App() {
               {stats:"15", content:"Years of Excellence"},
                {stats:"40+", content:"Countries Served"},
                 {stats:"100%", content:"Satisfaction Rate"}].map((item, i)=>(
-              <div className="stats_container" key={i}>
+              <div className="statics_container" key={i}>
                 <p className="stats_numerical">{item['stats']}</p>
                 <p className="stats_text">{item['content']}</p>
               </div>

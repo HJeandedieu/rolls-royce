@@ -806,6 +806,10 @@ span{
   display:flex;
   align-items:center;
   padding: 1rem 0rem;
+  border-left: 1px solid;
+  border-image-source: linear-gradient(to top, var(--gold), transparent);
+  border-image-slice: 5;
+  padding-left: 4rem;
 }
 
 .event-year{
@@ -846,7 +850,7 @@ span{
 }
 
 
-.stats_container{
+.statics_container{
   background-color:rgb(34,37,43);
   padding: 3rem 6rem;
   margin:5rem 0rem;
