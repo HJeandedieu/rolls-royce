@@ -295,6 +295,11 @@ span{
   height:100%;
   object-fit:cover;
   object-position:center 60%;
+  transition: transform 0.3s ease;
+}
+
+.vehicle_container:hover .vehicle_img {
+  transform: scale(1.1);
 }
 
 
