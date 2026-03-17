@@ -47,7 +47,7 @@ const CARS = [
     name: "Wraith",
     year: 2024,
     price: "$330,000",
-    category: "Coupé",
+    category: "Coupe",
     badge: "Limited",
     description: "The most powerful Rolls-Royce ever built. A grand tourer that draws power from the stars — its panoramic Starlight Headliner a testament.",
     specs: { engine: "6.6L V12", power: "624 HP", torque: "820 Nm", top: "250 km/h" },
@@ -169,9 +169,9 @@ function App() {
                 key={category} 
                 className="category_button"
                 onClick={() => handleActive(category)}
-                style={{
+                style={{ 
                   backgroundColor: active === category ? "#b8965a" : "transparent",
-                  color: active === category ? "black" : "white"
+                  color: active === category ? "black" : "rgb(131,130,128)"
                 }}
               >{category}</button>
             )
@@ -179,9 +179,31 @@ function App() {
         </div>
         {/* VEHICLE CATEGORIZATION TABS */}
         <div className="vehicles_container">
-          {
-            CARS.map((car) =>
+          {active === "All" &&
+          CARS.map((car) =>
             <div key={car.id} className="vehicle_card">
+              <div className="vehicle_container">
+                <img className="vehicle_img" src={car.img} alt={car.name} />
+                <div className="vehicle_description">
+                  <h3 className="vehicle_name">{car.name}</h3>
+                  <p className="vehicle_stats">{car.year} . {car.category}</p>
+                  <p className="vehicle_description_text" hidden>{car.description}</p>
+                  <div className="vehicle-price-tag">
+                    <span className="vehicle_price">{car.price}</span>
+                    <button className="vehicle_config_button">CONFIGURE</button>
+                  </div>
+                </div>
+                <div className="vehicle_badge">
+                  <button>{car.badge}</button>
+                </div>
+              </div>
+            </div>
+            )
+          }
+
+          {
+            CARS.filter((car) => car.category === active).map((car)=>
+              <div key={car.id} className="vehicle_card">
               <div className="vehicle_container">
                 <img className="vehicle_img" src={car.img} alt={car.name} />
                 <div className="vehicle_description">

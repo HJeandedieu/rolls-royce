@@ -230,8 +230,8 @@ span{
 
 /* VEHICLES INTRO TEXT */
 .vehicles_section{
-  padding:2rem 2rem;
-  background-color:var(--dark2);
+  padding:7rem 2rem;
+  background-color:rgb(17,18,20);
 }
 
 .vehicles_heading{
@@ -356,7 +356,7 @@ span{
 
 .heritage_text{
   background-color:var(--dark3);
-  padding:2rem;
+  padding:1.8rem;
   box-shadow: 
 0 4px 6px rgba(0,0,0,0.1),
 0 10px 20px rgba(0,0,0,0.15),
