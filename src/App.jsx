@@ -274,7 +274,7 @@ function App() {
           </div>
       </section>
     </main>
-    <Footer />
+    <Footer currentPage={currentPage} navigate={navigate} />
     </>)}
 
 
@@ -323,7 +323,7 @@ function App() {
         </section>
       </main>
       {/* FOOTER CONTENT */}
-      <Footer />
+      <Footer currentPage={currentPage} navigate={navigate} />
       </>
     )}
 
@@ -404,7 +404,7 @@ function App() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer currentPage={currentPage} navigate={navigate} />
       </>
     )}
 
@@ -493,7 +493,7 @@ function App() {
       </main>
 
       {/* FOOTER CONTENT */}
-      <Footer />
+      <Footer currentPage={currentPage} navigate={navigate} />
       </>
     )}
 

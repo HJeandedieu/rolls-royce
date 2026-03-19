@@ -4,7 +4,7 @@ const FOOTER_CONTENT = [
   {heading: "Contact", links: ['Monaco Office', 'London Office', 'Private Enquiry', 'Concierge', 'FAQ']}
 ]
 
-function Footer(){
+function Footer({currentPage, navigate}){
     return(
         <footer>
         <div className="footer-container">
@@ -17,7 +17,7 @@ function Footer(){
           <div key={index} className="footer-content">
           <h1 className="footer-content-heading">{content.heading}</h1>
           <div className="footer-links">{content.links.map((element, index)=>(
-            <p className="footer-link" key={index}>{element}</p>
+            <p className="footer-link" key={index}><button className="footer-button" onClick={ () => navigate("collection")}>{element}</button></p>
           ))}</div>
           </div>
           )}

@@ -875,3 +875,14 @@ span{
   text-transform:uppercase;
   font-weight:700;
 }
+
+.footer-button{
+  background-color:transparent;
+  color:rgb(128,126,123);
+  border:none;
+  padding: .5rem 0rem;
+}
+
+.footer-button:hover{
+  color:var(--gold)
+}
