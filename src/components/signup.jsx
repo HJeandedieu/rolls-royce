@@ -1,4 +1,12 @@
 function Signup(){
+
+    function handleSubmit(){
+        return (
+            <div className="signup-form-feedback">
+                <p>RedBlue Rolls — ✓ Your enquiry has been received. A specialist will contact you shortly.</p>
+            </div>
+        )
+    }
     return(
         <>
         {/* SIGN UP INTRO TEXT */}
@@ -11,7 +19,7 @@ function Signup(){
             <button className="login_close_button">✕</button>
             </div>
             {/* FORM  CONTENT */}
-            <form action="#">
+            <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="fullname">FULL NAME</label><br />
                 <input type="text" name="fullname" placeholder="Your name" /><br />
                 <label htmlFor="email">EMAIL</label><br />
