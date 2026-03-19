@@ -1,7 +1,20 @@
+import {useState} from "react";
+
 function Signup(){
+
+    const [submitted, setSubmitted] = useState(false);
+
+    function handleSubmit(){
+        setSubmitted(true);
+    }
     return(
         <>
         {/* SIGN UP INTRO TEXT */}
+        {submitted && (
+            <div className="submit-message">
+            <p>RedBlue Rolls — ✓ Your enquiry has been received. A specialist will contact you shortly.</p>
+        </div>
+        )}
         <div className="login_container">
             <div className="login_heading_container">
                 <div className="signup_intro_text">
@@ -11,7 +24,7 @@ function Signup(){
             <button className="login_close_button">✕</button>
             </div>
             {/* FORM  CONTENT */}
-            <form action="#">
+            <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="fullname">FULL NAME</label><br />
                 <input type="text" name="fullname" placeholder="Your name" /><br />
                 <label htmlFor="email">EMAIL</label><br />
