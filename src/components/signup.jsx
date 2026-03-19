@@ -1,15 +1,20 @@
+import {useState} from "react";
+
 function Signup(){
 
+    const [submitted, setSubmitted] = useState(false);
+
     function handleSubmit(){
-        return (
-            <div className="signup-form-feedback">
-                <p>RedBlue Rolls — ✓ Your enquiry has been received. A specialist will contact you shortly.</p>
-            </div>
-        )
+        setSubmitted(true);
     }
     return(
         <>
         {/* SIGN UP INTRO TEXT */}
+        {submitted && (
+            <div className="submit-message">
+            <p>RedBlue Rolls — ✓ Your enquiry has been received. A specialist will contact you shortly.</p>
+        </div>
+        )}
         <div className="login_container">
             <div className="login_heading_container">
                 <div className="signup_intro_text">
