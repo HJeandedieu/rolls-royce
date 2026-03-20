@@ -142,16 +142,14 @@ function App() {
       {/* INFINITE CAROUSEL */}
       <section className="marquee-section">
         <div className="marquee-track">
-        {[...Array(2)].flatMap(()=>
-        ["Phantom", "Ghost", "Wraith", "Dawn", "Cullinan", "Spectre"].map(name =>(
-          <>
-          <span key={name + Math.random()} className="marquee-item">
-            {name}
-          </span>
-           <span className="marquee-dot" />
-          </>
-        ))
-        )}
+        {[...Array(2)].flatMap((_, i) =>
+  ["Phantom", "Ghost", "Wraith", "Dawn", "Cullinan", "Spectre"].map((name, j) => (
+    <div key={`${name}-${i}-${j}`}>
+      <span className="marquee-item">{name}</span>
+      <span className="marquee-dot" />
+    </div>
+  ))
+)}
         </div>
       </section>
 
@@ -245,10 +243,10 @@ function App() {
         <h2 className="experience_heading title">The <span className="title_span">Rolls Experience</span></h2>
         <div className="testimonials_container">
         {
-          TESTIMONIALS.map((t, i) =>(
-            <div key={i} className="testimonial-card">
+          TESTIMONIALS.map((t) =>(
+            <div key={t.name} className="testimonial-card">
               <div className="testimonial-stars">
-                {[...Array(t.rating)].map((_, si) => <span key={si} className="star">★</span>)}
+                {[...Array(t.rating)].map((_,i) => <span key={i} className="star">★</span>)}
               </div>
               <p className="testimonial-text">{t.text}</p>
               <div className="testimonial-author">
@@ -368,9 +366,9 @@ function App() {
                 { year: "2018", title: "Global Expansion", desc: "Offices open in London, Dubai, and Singapore. Client base grows to 400+ ultra-high-net-worth individuals." },
                 { year: "2022", title: "Digital Launch", desc: "The RedBlue Rolls online platform debuts, bringing white-glove service to a digital-first audience." },
                 { year: "2024", title: "Record Year", desc: "Over 120 bespoke Rolls-Royce vehicles delivered worldwide. 100% client satisfaction rating maintained." },
-              ].map((item, index) => (
-                <>
-                  <div className="event" key={index}>
+              ].map((item) => (
+                <div key={item.year}>
+                  <div className="event">
                     <div className="event-year">
                       <p className="flex_para">
                       <span className="event_year">{item.year}</span>
@@ -381,7 +379,7 @@ function App() {
                       <p className="event_desc">{item.desc}</p>
                     </div>
                   </div>
-                </>
+                </div>
               ))
               }
             </div>
@@ -394,8 +392,8 @@ function App() {
             [{stats:"120+", content:"Vehicles Delivered"}, 
               {stats:"15", content:"Years of Excellence"},
                {stats:"40+", content:"Countries Served"},
-                {stats:"100%", content:"Satisfaction Rate"}].map((item, i)=>(
-              <div className="statics_container" key={i}>
+                {stats:"100%", content:"Satisfaction Rate"}].map((item)=>(
+              <div className="statics_container" key={item.stats}>
                 <p className="stats_numerical">{item['stats']}</p>
                 <p className="stats_text">{item['content']}</p>
               </div>

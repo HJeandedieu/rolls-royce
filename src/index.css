@@ -886,3 +886,25 @@ span{
 .footer-button:hover{
   color:var(--gold)
 }
+
+/* SUBMIT MESSAGE */
+
+.submit-message{
+  background-color:#4CAF50;
+  color:white;
+  padding:12px;
+  border-radius:4px;
+  margin-top:16px;
+  text-align:center;
+  animation:slideIn 0.3s ease;
+}
+
+@keyframes slideIn{
+  from{opacity: 0; transform: translateY(-10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+button:disabled {
+  background-color:#ccc;
+  cursor:not-allowed;
+}
