@@ -498,14 +498,14 @@ function App() {
     {currentPage === "login" &&(
       <>
         <Navbar currentPage={currentPage} navigate={navigate} />
-        <Login />
+        <Login navigate={navigate} />
       </>
     )}
 
     {currentPage === "signup" &&(
       <>
         <Navbar currentPage={currentPage} navigate={navigate} />
-        <Signup />
+        <Signup navigate={navigate} />
       </>
     )}
     </>
