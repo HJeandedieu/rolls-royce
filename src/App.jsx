@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from 'react';
 
 import Navbar from "./components/navbar.jsx";
@@ -95,6 +96,20 @@ function App() {
   const [register, setRegister] = useState(false);
   const [registerMessage, setRegisterMessage] = useState("");
 
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      setSubmitMessage("Your Enquiry has been received successfully!");
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitMessage(""), 3000);
+    },1500)
+  }
+
   const handleActive = (category)=>{
     setActive(category);
   }
@@ -172,6 +187,8 @@ function App() {
           <p className="supscript">THE FLEET</p>
           <h1 className="vehicles_heading title">Latest <span className="title_span">Vehicles</span></h1>
         </div>
+
+        {/* VEHICLE CATEGORIZATION TABS */}
         <div className="categories_buttons_container">
           {
             CATEGORIES.map(category => 
@@ -187,7 +204,7 @@ function App() {
             )
           }
         </div>
-        {/* VEHICLE CATEGORIZATION TABS */}
+        
         <div className="vehicles_container">
           {active === "All" &&
           CARS.map((car) =>
@@ -309,34 +326,69 @@ function App() {
             <p className="supscript">FULL COLLECTION</p>
             <h1 className="vehicles_heading title">Every <span className="title_span">Masterpiece</span></h1>
           </div>
-          <div className="categories_buttons_container">
-            {
-              CATEGORIES.map(category => 
-                <button key={category} className="category_button">{category}</button>
-              )
-            }
-          </div>
+
           {/* VEHICLE CATEGORIZATION TABS */}
+          <div className="categories_buttons_container">
+          {
+            CATEGORIES.map(category => 
+              <button 
+                key={category} 
+                className="category_button"
+                onClick={() => handleActive(category)}
+                style={{ 
+                  backgroundColor: active === category ? "#b8965a" : "transparent",
+                  color: active === category ? "black" : "rgb(131,130,128)"
+                }}
+              >{category}</button>
+            )
+          }
+        </div>
+          
           <div className="vehicles_container">
-            {
-              CARS.map((car) =>
-              <div key={car.id} className="vehicle_card">
-                <div className="vehicle_container">
-                  <img className="vehicle_img" src={car.img} alt={car.name} />
-                  <div className="vehicle_description">
-                    <h3 className="vehicle_name">{car.name}</h3>
-                    <p className="vehicle_stats">{car.year} . {car.category}</p>
-                    <p className="vehicle_description_text" hidden>{car.description}</p>
-                    <div className="vehicle-price-tag">
-                      <span className="vehicle_price">{car.price}</span>
-                      <button className="vehicle_config_button">CONFIGURE</button>
-                    </div>
+          {active === "All" &&
+          CARS.map((car) =>
+            <div key={car.id} className="vehicle_card">
+              <div className="vehicle_container">
+                <img className="vehicle_img" src={car.img} alt={car.name} />
+                <div className="vehicle_description">
+                  <h3 className="vehicle_name">{car.name}</h3>
+                  <p className="vehicle_stats">{car.year} . {car.category}</p>
+                  <p className="vehicle_description_text" hidden>{car.description}</p>
+                  <div className="vehicle-price-tag">
+                    <span className="vehicle_price">{car.price}</span>
+                    <button className="vehicle_config_button">CONFIGURE</button>
                   </div>
                 </div>
+                <div className="vehicle_badge">
+                  <button>{car.badge}</button>
+                </div>
               </div>
-              )
-            }
-          </div>
+            </div>
+            )
+          }
+
+          {
+            CARS.filter((car) => car.category === active).map((car)=>
+              <div key={car.id} className="vehicle_card">
+              <div className="vehicle_container">
+                <img className="vehicle_img" src={car.img} alt={car.name} />
+                <div className="vehicle_description">
+                  <h3 className="vehicle_name">{car.name}</h3>
+                  <p className="vehicle_stats">{car.year} . {car.category}</p>
+                  <p className="vehicle_description_text" hidden>{car.description}</p>
+                  <div className="vehicle-price-tag">
+                    <span className="vehicle_price">{car.price}</span>
+                    <button className="vehicle_config_button">CONFIGURE</button>
+                  </div>
+                </div>
+                <div className="vehicle_badge">
+                  <button>{car.badge}</button>
+                </div>
+              </div>
+            </div>
+            )
+          }
+        </div>
         </section>
       </main>
       {/* FOOTER CONTENT */}
@@ -483,7 +535,7 @@ function App() {
                   <p className="supscript registration-supscript">PRIVATE ENQUIRY</p>
                   <h1 className="reservation_form_heading title">Reserve a Consultation</h1>
                 </div>
-                <form action="#">
+                <form onSubmit={handleSubmit}>
                   <div className="user_initials">
                     <div>
                       <label htmlFor="fullName">Full Name</label><br />
@@ -499,11 +551,23 @@ function App() {
                   <label htmlFor="interest">MODEL OF INTEREST</label><br />
                   <select name="interest" id="interest">
                     <option value="select">Select a Model</option>
-                  </select><br />
+                    {CARS.map(car => (
+                      <option key={car.id} value={`${car.name} - ${car.price}`}>
+                        {`${car.name} - ${car.price}`}
+                      </option>
+                    ))}
+                    </select><br />
                   <label htmlFor="message">MESSAGE</label><br />
                   <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea><br />
-                  <button>SUBMIT ENQUIRY</button>
+                  <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting...." : "SUBMIT ENQUIRY"}
+                  </button>
                 </form>
+                <div>
+                  {submitMessage && (
+                    <p className="submit-message"><span>RedBlue Rolls</span> {submitMessage}</p>
+                  )}
+                </div>
             </div>
           </div>
         </section>
