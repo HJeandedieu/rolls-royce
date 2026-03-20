@@ -92,6 +92,8 @@ const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [active, setActive] = useState("All");
+  const [register, setRegister] = useState(false);
+  const [registerMessage, setRegisterMessage] = useState("");
 
   const handleActive = (category)=>{
     setActive(category);
@@ -100,6 +102,16 @@ function App() {
   const navigate = (page) =>{
     setCurrentPage(page);
     window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  const handleRegistry = () =>{
+    setRegister(true);
+    setRegisterMessage(" You have been added to our private list");
+
+    setTimeout(() => {
+      setRegister(false)
+      setRegisterMessage("");
+    },3000)
   }
 
   return (
@@ -267,8 +279,15 @@ function App() {
             <p className="join-text">Join our private registry for exclusive previews and bespoke acquisition opportunities.</p>
             <div className="join-form">
               <input type="text" placeholder="Your email address" className="input-registry" />
-              <button className="registry-button">JOIN REGISTRY</button>
+              <button className="registry-button" onClick={handleRegistry}>JOIN REGISTRY</button>
             </div>
+            {register && (
+               <p
+               style={{
+                display: register ? "block":none
+               }}
+               ><span>RedBlue Rolls — ✓ </span>{registerMessage}</p>
+            )}
           </div>
       </section>
     </main>
