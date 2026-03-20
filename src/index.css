@@ -890,13 +890,15 @@ span{
 /* SUBMIT MESSAGE */
 
 .submit-message{
-  background-color:#4CAF50;
-  color:white;
+  background-color:rgb(34,37,43);
+  font-size:.8rem;
+  color:var(--muted);
   padding:12px;
   border-radius:4px;
   margin-top:16px;
   text-align:center;
   animation:slideIn 0.3s ease;
+  border:1px solid var(--gold);
 }
 
 @keyframes slideIn{
@@ -905,6 +907,6 @@ span{
 }
 
 button:disabled {
-  background-color:#ccc;
+  color:black;
   cursor:not-allowed;
 }

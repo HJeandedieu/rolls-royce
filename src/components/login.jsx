@@ -1,4 +1,8 @@
-function Login(){
+function Login({navigate}){
+
+    const handleClose = () =>{
+        navigate("home");
+    }
     return (
         <>
         {/* LOGIN INTRO TEXT */}
@@ -9,10 +13,10 @@ function Login(){
                     <h1 className="title login_heading">Welcome Back</h1>
                     <p className="login_paragraph">Access your private collection and consultations.</p>
                 </div>
-                <button className="login_close_button">✕</button>
+                <button className="login_close_button" onClick={handleClose}>✕</button>
             </div>
             {/* LOGIN FORM */}
-            <form action="#">
+            <form>
                 <label htmlFor="email">EMAIL</label><br />
                 <input type="email" name="email" placeholder="your@email.com" /><br />
                 <label htmlFor="password">PASSWORD</label><br />
