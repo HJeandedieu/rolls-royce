@@ -55,6 +55,13 @@ nav{
   font-weight:100;
 }
 
+.nav-intro-text{
+  background-color:transparent;
+  color:var(--white);
+  font-size:1.5rem;
+  border:none;
+}
+
 span{
   color:var(--gold)
 }
@@ -276,6 +283,7 @@ span{
   position:relative;
   height:20rem;
   overflow:hidden;
+  cursor:pointer;
 }
 
 .vehicle_badge{
