@@ -254,7 +254,7 @@ function App() {
 
       {/* HERITAGE SECTION */}
       <section className="heritage_container">
-        <div>
+        <div className="heritage_image">
           <img className="heritage_image" src="/home/rolls-royce-logo.avif" alt="Engage with our heritage" />
         </div>
         <div className="heritage_text">
@@ -539,18 +539,18 @@ function App() {
                   <div className="user_initials">
                     <div>
                       <label htmlFor="fullName">Full Name</label><br />
-                      <input type="text" name="fullName" placeholder="Your name" style={{width:"19.5rem"}} /><br />
+                      <input type="text" name="fullName" placeholder="Your name" style={{width:"19.5rem"}} required /><br />
                     </div>
                     <div>
                       <label htmlFor="email">Email</label><br />
-                      <input type="email" name="email" placeholder="your@email.com" style={{width:"19.5rem"}} /><br />
+                      <input type="email" name="email" placeholder="your@email.com" style={{width:"19.5rem"}} required /><br />
                     </div>
                   </div>
                   <label htmlFor="phone">PHONE</label><br />
-                  <input type="tel" name="phone" placeholder="+1 000 000 0000" /><br />
+                  <input type="tel" name="phone" placeholder="+1 000 000 0000" required /><br />
                   <label htmlFor="interest">MODEL OF INTEREST</label><br />
-                  <select name="interest" id="interest">
-                    <option value="select">Select a Model</option>
+                  <select name="interest" id="interest" required>
+                    <option value="select" selected hidden disabled>Select a Model</option>
                     {CARS.map(car => (
                       <option key={car.id} value={`${car.name} - ${car.price}`}>
                         {`${car.name} - ${car.price}`}

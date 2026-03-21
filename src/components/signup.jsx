@@ -38,15 +38,15 @@ function Signup({ navigate }) {
         <form onSubmit={handleSubmit}>
           <label htmlFor="fullname">FULL NAME</label>
           <br />
-          <input type="text" name="fullname" placeholder="Your name" />
+          <input type="text" name="fullname" placeholder="Your name" required />
           <br />
           <label htmlFor="email">EMAIL</label>
           <br />
-          <input type="email" name="email" placeholder="your@email.com" />
+          <input type="email" name="email" placeholder="your@email.com" required />
           <br />
           <label htmlFor="password">PASSWORD</label>
           <br />
-          <input type="password" name="password" placeholder="........" />
+          <input type="password" name="password" placeholder="........" required />
           <br />
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Creating..." : "CREATE ACCOUNT"}
@@ -54,9 +54,7 @@ function Signup({ navigate }) {
         </form>
         <p className="no-account-text">
           Already have an account?{" "}
-          <a className="signup-link" href="#">
-            sign in
-          </a>
+          <a className="signup-link" onClick={()=> navigate("login")} href="#">login</a>
         </p>
         {submitMessage && <div className="submit-message">{submitMessage}</div>}
       </div>

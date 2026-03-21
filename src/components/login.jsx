@@ -1,4 +1,18 @@
+import {useState} from "react";
+
 function Login({navigate}){
+    
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setTimeout(()=>{
+            setIsSubmitting(false);
+            navigate("home")
+        },3000);
+        
+    }
 
     const handleClose = () =>{
         navigate("home");
@@ -16,15 +30,19 @@ function Login({navigate}){
                 <button className="login_close_button" onClick={handleClose}>✕</button>
             </div>
             {/* LOGIN FORM */}
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="email">EMAIL</label><br />
-                <input type="email" name="email" placeholder="your@email.com" /><br />
+                <input type="email" name="email" placeholder="your@email.com" required /><br />
                 <label htmlFor="password">PASSWORD</label><br />
                 
-                <input type="password" name="password" placeholder="........" /> <br />
-                <button type="submit">SIGN IN</button><br />
+                <input type="password" name="password" placeholder="........" required /> <br />
+                <button type="submit" disabled={isSubmitting}>
+                    {
+                        isSubmitting ? "Signing In..." : "SIGN IN"
+                    }
+                </button><br />
             </form>
-            <p className="no-account-text">Don't have an account? <a className="signup-link" href="#">Sign Up</a></p>
+            <p className="no-account-text">Don't have an account? <a className="signup-link" onClick={() => navigate("signup")} href="#">Sign Up</a></p>
         </div>
         </>
     )
