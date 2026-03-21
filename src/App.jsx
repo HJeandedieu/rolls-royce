@@ -262,7 +262,7 @@ function App() {
           <h2 className="title heritage_heading">Every Detail <br />Hand-Crafted</h2>
           <p className="heritage_paragraph">At Goodwood, over 2,000 skilled artisans spend an average of 450 hours crafting a single vehicle. From the 20-hide 
             leather interiors to hand-painted coachlines drawn in one breath. Perfection is not an aspiration, it is a standard.</p>
-            <button className="heritage_button">DISCOVER OUR HERITAGE</button>
+            <button onClick={() => navigate("about")} className="heritage_button">DISCOVER OUR HERITAGE</button>
         </div>
       </section>
 
