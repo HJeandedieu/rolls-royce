@@ -12,8 +12,8 @@ function Signup({ navigate }) {
     setTimeout(() => {
       setSubmitMessage("Account Created Successfully! Stay tuned for more!");
       setIsSubmitting(false);
-      setTimeout(() => setSubmitMessage(""), 5000);
-    }, 15070);
+      setTimeout(() => setSubmitMessage(""), 3000);
+    }, 3000);
   }
 
   const handleClose = () => {
