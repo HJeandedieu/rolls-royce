@@ -5,7 +5,7 @@ function Navbar({ currentPage, navigate }){
         <nav>
           {/* INTRO TEXT */}
           <div className="navigation-intro-text">
-            <h1 className="nav-intro-text">RED<span>BLUE</span> ROLLS</h1>
+            <button onClick={() => navigate("home")} className="nav-intro-text">RED<span>BLUE</span> ROLLS</button>
           </div>
           {/* NAVIGATION LINKS */}
           <div className="navigation-links">

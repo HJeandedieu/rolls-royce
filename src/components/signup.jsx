@@ -13,7 +13,7 @@ function Signup({ navigate }) {
       setSubmitMessage("Account Created Successfully! Stay tuned for more!");
       setIsSubmitting(false);
       setTimeout(() => setSubmitMessage(""), 5000);
-    }, 1500);
+    }, 15070);
   }
 
   const handleClose = () => {
