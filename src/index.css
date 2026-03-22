@@ -740,13 +740,23 @@ span{
 
 /* FOOTER STYLING */
 
+.footer-intro-text{
+  display:none;
+}
+
+@media(min-width:1024px){
+  .footer-intro-text{
+    display:block;
+  }
+}
+
 .footer-heading{
   font-size:2rem;
 }
 
 .footer-text{
   font-size: .8rem;
-  color:var(--muted)
+  color:var(--muted);
 }
 
 .footer-main-content{
