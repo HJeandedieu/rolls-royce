@@ -6,6 +6,9 @@ function Navbar({ currentPage, navigate }){
           {/* INTRO TEXT */}
           <div className="navigation-intro-text">
             <button onClick={() => navigate("home")} className="nav-intro-text">RED<span>BLUE</span> ROLLS</button>
+            <button className="rolls-logo" onClick={() => navigate("home")}>
+              <img width="32px" src="/Rolls-Royce-Logo-PNG-Isolated-Photos.png" alt="luxury" />
+            </button>
           </div>
           {/* NAVIGATION LINKS */}
           <div className="navigation-links">
