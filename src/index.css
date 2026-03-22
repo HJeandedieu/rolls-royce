@@ -183,16 +183,14 @@ span{
   text-transform: uppercase;
   font-size:.75rem;
   font-weight:400;
-  letter-spacing: .5rem;
-  line-height:0rem;
 }
 
 .title{
   color:var(--white);
   font-family:var(--font-display);
-  font-size:6rem;
+  font-size:3rem;
   font-weight:100;
-  line-height:4.5rem;
+  line-height:2.5rem;
 }
 
 .title_span{
@@ -214,19 +212,18 @@ span{
 
 .explore_buttons_container{
   display:flex;
-  gap:2rem;
+  gap:1rem;
 }
 
 .explore_collection{
-  padding: 14px 36px; 
+  /* padding: 14px 36px; */
   background: var(--gold); 
   color: var(--black);
   border: none; 
   cursor: pointer; 
   font-family: var(--font-body);
-  font-size: 11px; 
+  font-size: .5rem; 
   font-weight: 600; 
-  letter-spacing: 3px; 
   text-transform: uppercase;
   transition: all 0.3s ease; 
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
@@ -236,8 +233,8 @@ span{
   background-color:transparent;
   color:var(--light);
   border: 1px solid var(--mid);
-  padding:1rem;
-  font-size:0.85rem;
+  padding:.5rem;
+  font-size:0.5rem;
   font-weight:500
 }
 
@@ -248,16 +245,62 @@ span{
 
 .stats_number{
   color:var(--gold);
-  font-size:3rem;
+  font-size:1.5rem;
   font-family: var(--font-display);
   line-height:0rem;
 }
 
 .stats_text{
-  font-size:.75rem;
+  font-size:.5rem;
   color: var(--muted)
 }
 
+/* MAIN CONTENT INTRO TEXT RESPONSIVE DESIGN */
+@media(min-width:768px){
+  .supscript{
+    letter-spacing:.5rem;
+  }
+  .title{
+    font-size:4rem;
+    line-height:3.5rem;
+  }
+  .explore_collection{
+    padding:7px 18px;
+    font-size:.6rem;
+  }
+
+  .explore_story{
+    padding:1rem;
+    font-size:.6rem;
+  }
+
+  .stats_number{
+    font-size:2rem;
+  }
+}
+
+@media(min-width:1024px){
+  .title{
+    font-size:6rem;
+    line-height:4.5rem;
+  }
+  .explore_collection{
+    padding:14px 36px;
+    font-size:.8rem;
+  }
+
+  .explore_story{
+    font-size:.8rem;
+  }
+
+  .stats_number{
+    font-size:3rem;
+  }
+
+  .stats_text{
+    font-size:.85rem;
+  }
+}
 
 /* INFINITI CAROUSEL*/
 

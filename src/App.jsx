@@ -139,7 +139,7 @@ function App() {
       <Navbar currentPage={currentPage} navigate={navigate} />
       {/* MAIN CONTENT INTRO TEXT */}
       <section className="main_text">
-        <p className="main_text supscript">Est. 1904 · Goodwood, England</p>
+        <p className=" supscript">Est. 1904 · Goodwood, England</p>
         <h1 className="main_text_heading title">Where Silence <br />Becomes <span className="title_span">Luxury</span></h1>
         <p className="main_text_paragraph">RedBlue Rolls curates the world's most exceptional motor cars for <br />
         discerning collectors. Each vehicle a masterpiece. Each acquisition an<br />
@@ -160,7 +160,7 @@ function App() {
               </div>
               <div>
                 <p className="stats_number">24/7</p>
-                <p className="stats_text">CONVERGE</p>
+                <p className="stats_text">CONCIERGE</p>
               </div>
             </div>
           </div>
