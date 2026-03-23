@@ -598,8 +598,15 @@ span{
 }
 
 .testimonials_container{
-  display:flex;
+  display:grid;
+  grid-template-columns:auto;
   gap:.3rem;
+}
+
+@media(min-width:1024px){
+  .testimonials_container{
+    display:flex;
+  }
 }
 
 .testimonial-card{
