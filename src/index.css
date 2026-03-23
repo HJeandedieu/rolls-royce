@@ -16,6 +16,10 @@
     --font-body: 'Montserrat', sans-serif;
   }
 
+  *{
+    box-sizing:border-box;
+  }
+
   input,select,label,button{
     font-family:inherit;
     font-size:inherit;
@@ -598,8 +602,15 @@ span{
 }
 
 .testimonials_container{
-  display:flex;
+  display:grid;
+  grid-template-columns:auto;
   gap:.3rem;
+}
+
+@media(min-width:1024px){
+  .testimonials_container{
+    display:flex;
+  }
 }
 
 .testimonial-card{
@@ -646,8 +657,29 @@ span{
 }
 
 .join-heading{
-  line-height:2rem;
-  font-size:4rem;
+  line-height:0rem;
+  font-size:3rem;
+}
+
+@media(min-width:768px){
+  .join-heading{
+    font-size:2rem;
+  }
+
+  
+}
+
+@media(min-width:1024px){
+  .join-heading{
+    line-height:2rem;
+    font-size:4rem;
+  }
+  .join-form input, button{
+    padding:2rem;
+  }
+  .join-form input{
+    width:20%;
+  }
 }
 
 .join-text{
@@ -661,13 +693,14 @@ span{
 }
 
 .join-form input, button{
-  padding:1rem;
+  padding:.5rem;
+  font-size:.5rem;
 }
 
 .join-form input{
   border: 1px solid var(--gold);
   background-color:rgb(44,46,49);
-  width:20%;
+  width:40%;
   color:var(--muted)
 }
 
