@@ -671,8 +671,11 @@ span{
 
 @media(min-width:1024px){
   .join-heading{
-    line-height:2rem;
+    line-height:0rem;
     font-size:4rem;
+  }
+  .join-text{
+    line-height:0rem;
   }
   .join-form input, button{
     padding:2rem;
@@ -695,6 +698,27 @@ span{
 .join-form input, button{
   padding:.5rem;
   font-size:.5rem;
+}
+
+@media(min-width:768px){
+  .join-form input{
+    width:30%;
+  }
+  .join-form input, button{
+    padding:.7rem;
+  }
+}
+
+@media(min-width:1024px){
+  .join-form input{
+    width:96rem;
+  }
+
+  .join-form input, button{
+    padding:1rem;
+    font-size:.8rem;
+  }
+
 }
 
 .join-form input{
