@@ -54,7 +54,7 @@ function Footer({ currentPage, navigate }) {
   return (
     <footer>
       <div className="footer-container">
-        <div>
+        <div className="footer-intro-text">
           <h2 className="footer-heading title">
             Red<span>Blue</span> Rolls
           </h2>
