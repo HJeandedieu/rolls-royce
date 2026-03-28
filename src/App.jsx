@@ -1,7 +1,7 @@
-import React from "react";
 import { useState } from 'react';
 
 import Navbar from "./components/navbar.jsx";
+import Vehicles from "./components/vehicles.jsx";
 import Login from "./components/login.jsx";
 import Signup from "./components/signup.jsx";
 import Footer from "./components/footer.jsx";
@@ -13,12 +13,11 @@ const TESTIMONIALS = [
   { name: "James Thornton", location: "London, UK", text: "Third purchase through RedBlue. The process never ceases to amaze me — seamless, personal, and perfectly curated.", rating: 5 },
 ]
 
-const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
+
 
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [active, setActive] = useState("All");
   const [register, setRegister] = useState(false);
   const [registerMessage, setRegisterMessage] = useState("");
 
@@ -36,9 +35,6 @@ function App() {
     },1500)
   }
 
-  const handleActive = (category)=>{
-    setActive(category);
-  }
 
   const navigate = (page) =>{
     setCurrentPage(page);
@@ -113,69 +109,9 @@ function App() {
           <p className="supscript">THE FLEET</p>
           <h1 className="vehicles_heading title">Latest <span className="title_span">Vehicles</span></h1>
         </div>
-
-        {/* VEHICLE CATEGORIZATION TABS */}
-        <div className="categories_buttons_container">
-          {
-            CATEGORIES.map(category => 
-              <button 
-                key={category} 
-                className="category_button"
-                onClick={() => handleActive(category)}
-                style={{ 
-                  backgroundColor: active === category ? "#b8965a" : "transparent",
-                  color: active === category ? "black" : "rgb(131,130,128)"
-                }}
-              >{category}</button>
-            )
-          }
-        </div>
+      
+      <Vehicles />
         
-        <div className="vehicles_container">
-          {active === "All" &&
-          CARS.map((car) =>
-            <div key={car.id} className="vehicle_card">
-              <div className="vehicle_container">
-                <img className="vehicle_img" src={car.img} alt={car.name} />
-                <div className="vehicle_description">
-                  <h3 className="vehicle_name">{car.name}</h3>
-                  <p className="vehicle_stats">{car.year} . {car.category}</p>
-                  <p className="vehicle_description_text" hidden>{car.description}</p>
-                  <div className="vehicle-price-tag">
-                    <span className="vehicle_price">{car.price}</span>
-                    <button className="vehicle_config_button">CONFIGURE</button>
-                  </div>
-                </div>
-                <div className="vehicle_badge">
-                  <button>{car.badge}</button>
-                </div>
-              </div>
-            </div>
-            )
-          }
-
-          {
-            CARS.filter((car) => car.category === active).map((car)=>
-              <div key={car.id} className="vehicle_card">
-              <div className="vehicle_container">
-                <img className="vehicle_img" src={car.img} alt={car.name} />
-                <div className="vehicle_description">
-                  <h3 className="vehicle_name">{car.name}</h3>
-                  <p className="vehicle_stats">{car.year} . {car.category}</p>
-                  <p className="vehicle_description_text" hidden>{car.description}</p>
-                  <div className="vehicle-price-tag">
-                    <span className="vehicle_price">{car.price}</span>
-                    <button className="vehicle_config_button">CONFIGURE</button>
-                  </div>
-                </div>
-                <div className="vehicle_badge">
-                  <button>{car.badge}</button>
-                </div>
-              </div>
-            </div>
-            )
-          }
-        </div>
       </section>
 
       {/* HERITAGE SECTION */}
@@ -253,68 +189,7 @@ function App() {
             <h1 className="vehicles_heading title">Every <span className="title_span">Masterpiece</span></h1>
           </div>
 
-          {/* VEHICLE CATEGORIZATION TABS */}
-          <div className="categories_buttons_container">
-          {
-            CATEGORIES.map(category => 
-              <button 
-                key={category} 
-                className="category_button"
-                onClick={() => handleActive(category)}
-                style={{ 
-                  backgroundColor: active === category ? "#b8965a" : "transparent",
-                  color: active === category ? "black" : "rgb(131,130,128)"
-                }}
-              >{category}</button>
-            )
-          }
-        </div>
-          
-          <div className="vehicles_container">
-          {active === "All" &&
-          CARS.map((car) =>
-            <div key={car.id} className="vehicle_card">
-              <div className="vehicle_container">
-                <img className="vehicle_img" src={car.img} alt={car.name} />
-                <div className="vehicle_description">
-                  <h3 className="vehicle_name">{car.name}</h3>
-                  <p className="vehicle_stats">{car.year} . {car.category}</p>
-                  <p className="vehicle_description_text" hidden>{car.description}</p>
-                  <div className="vehicle-price-tag">
-                    <span className="vehicle_price">{car.price}</span>
-                    <button className="vehicle_config_button">CONFIGURE</button>
-                  </div>
-                </div>
-                <div className="vehicle_badge">
-                  <button>{car.badge}</button>
-                </div>
-              </div>
-            </div>
-            )
-          }
-
-          {
-            CARS.filter((car) => car.category === active).map((car)=>
-              <div key={car.id} className="vehicle_card">
-              <div className="vehicle_container">
-                <img className="vehicle_img" src={car.img} alt={car.name} />
-                <div className="vehicle_description">
-                  <h3 className="vehicle_name">{car.name}</h3>
-                  <p className="vehicle_stats">{car.year} . {car.category}</p>
-                  <p className="vehicle_description_text" hidden>{car.description}</p>
-                  <div className="vehicle-price-tag">
-                    <span className="vehicle_price">{car.price}</span>
-                    <button className="vehicle_config_button">CONFIGURE</button>
-                  </div>
-                </div>
-                <div className="vehicle_badge">
-                  <button>{car.badge}</button>
-                </div>
-              </div>
-            </div>
-            )
-          }
-        </div>
+          <Vehicles />
         </section>
       </main>
       {/* FOOTER CONTENT */}

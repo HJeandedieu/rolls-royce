@@ -1,5 +1,4 @@
-import {usestate} from "react";
-
+import { useState } from "react";
 const CARS = [
   {
     id: 1,
@@ -75,9 +74,16 @@ const CARS = [
   },
 ]
 
-function vehicles(){
+const CATEGORIES = ['All', "Sedan", "SUV", "Coupe", "Convertible", "Electric"];
+
+function Vehicles(){
+    const [active,  setActive] = useState("All");
+
+    const handleActive = (category) =>{
+        setActive(category);
+    }
     return (
-        <>
+        <section>
             {/* VEHICLE CATEGORIZATION TABS */}
             <div className="categories_buttons_container">
               {
@@ -139,6 +145,8 @@ function vehicles(){
               )
             }
             </div>
-        </>
+        </section>
     )
 }
+
+export default Vehicles;
