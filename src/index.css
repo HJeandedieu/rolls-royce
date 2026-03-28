@@ -696,8 +696,8 @@ span{
 }
 
 .join-form input, button{
-  padding:.5rem;
-  font-size:.5rem;
+  padding:1rem;
+  font-size:.7rem;
 }
 
 @media(min-width:768px){
@@ -705,7 +705,7 @@ span{
     width:30%;
   }
   .join-form input, button{
-    padding:.7rem;
+    padding:.8rem;
   }
 }
 
@@ -788,12 +788,22 @@ span{
 }
 
 .footer-bottom{
-  display:flex;
-  justify-content:space-between;
   border-top:1px solid var(--dark3);
   color:var(--muted);
-  font-size: .8rem;
-  padding: 2rem 2rem;
+  font-size: .7rem;
+  padding: 1rem .7rem;
+  text-align:center;
+}
+
+@media(min-width:1024px){
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid var(--dark3);
+    color:var(--muted);
+    font-size: .8rem;
+    padding: 2rem 2rem;
+  }
 }
 
 
