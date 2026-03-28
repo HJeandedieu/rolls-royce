@@ -184,7 +184,7 @@ function App() {
         {/* VEHICLES */}
         <section className="vehicles_section">
           {/* VEHICLES INTRO TEXT */}
-          <div>
+          <div className="vehicles_collection_page">
             <p className="supscript">FULL COLLECTION</p>
             <h1 className="vehicles_heading title">Every <span className="title_span">Masterpiece</span></h1>
           </div>

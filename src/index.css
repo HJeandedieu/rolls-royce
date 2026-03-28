@@ -365,8 +365,20 @@ span{
 
 /* VEHICLES INTRO TEXT */
 .vehicles_section{
-  padding:7rem 2rem;
+  padding:1rem 2rem;
   background-color:rgb(17,18,20);
+}
+
+@media(min-width:768px){
+  .vehicles_section{
+    padding:2rem 2rem;
+  }
+}
+
+@media(min-width:1024px){
+  .vehicles_section{
+    padding:7rem 2rem;
+  }
 }
 
 .vehicles_heading{
@@ -386,6 +398,7 @@ span{
   text-transform:uppercase;
   font-size:0.7rem;
   font-weight:700;
+  cursor:pointer;
 }
 
 @media(min-width:768px){
@@ -1181,3 +1194,6 @@ button:disabled {
   cursor:not-allowed;
 }
 
+.vehicles_collection_page{
+  line-height:0;
+}
