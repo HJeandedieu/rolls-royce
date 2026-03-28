@@ -1111,9 +1111,6 @@ span{
   padding: 5rem 0rem;
 }
 
-.about_heritage_heading{
-  font-size:4rem;
-}
 
 .about_heritage_span{
   font-style:italic;
@@ -1122,8 +1119,14 @@ span{
 .timeline_container{
   width:fit-content;
   margin:0 auto;
-  padding:0rem 9rem;
+  padding:0rem 2rem;
   padding-bottom:6rem;
+}
+
+@media(min-width:1024px){
+  .timeline_container{
+    padding:0rem 9rem;
+  }
 }
 
 .event{
@@ -1167,9 +1170,12 @@ span{
 }
 
 .about_vehicle_stats{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
   justify-content:center;
   gap:1rem;
+  padding:3rem;
+  font-size:.8rem;
   background-color:rgb(17,18,20);
 }
 
@@ -1177,9 +1183,22 @@ span{
 .statics_container{
   background-color:rgb(34,37,43);
   padding: 3rem 6rem;
-  margin:5rem 0rem;
   display:flex;
+  justify-content:center;
+  align-items:center;
   flex-direction:column;
+}
+
+@media(min-width:1024px){
+  .about_vehicle_stats{
+    grid-template-columns:repeat(4,1fr);
+    font-size:.85rem;
+    gap:1rem;
+  }
+
+  .statics_container{
+    margin:5rem 0rem;
+  }
 }
 
 .stats_numerical{
@@ -1193,6 +1212,7 @@ span{
 .stats_text{
   text-transform:uppercase;
   font-weight:700;
+  font-size:.7rem;
 }
 
 .footer-button{
