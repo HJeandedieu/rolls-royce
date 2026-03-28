@@ -6,6 +6,80 @@ import Login from "./components/login.jsx";
 import Signup from "./components/signup.jsx";
 import Footer from "./components/footer.jsx";
 
+const CARS = [
+  {
+    id: 1,
+    name: "Phantom",
+    year: 2024,
+    price: "$495,000",
+    category: "Sedan",
+    badge: "Flagship",
+    description: "The pinnacle of automotive craftsmanship. 563 horsepower of serene power wrapped in hand-stitched leather and 44 lbs of sound-deadening material.",
+    specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
+    img: "/home/phantom.jpg",
+    color: "#c8a96e",
+  },
+  {
+    id: 2,
+    name: "Ghost",
+    year: 2024,
+    price: "$332,500",
+    category: "Sedan",
+    badge: "Best Seller",
+    description: "Post Opulence. A whisper of power, a cathedral of calm. The Ghost redefines what a modern luxury sedan can be.",
+    specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
+    img: "/home/ghost.jpg",
+    color: "#9ea8b3",
+  },
+  {
+    id: 3,
+    name: "Cullinan",
+    year: 2024,
+    price: "$348,500",
+    category: "SUV",
+    badge: "New",
+    description: "Effortless everywhere. The world's only true super-luxury SUV, hand-built at Goodwood for those who refuse compromise.",
+    specs: { engine: "6.75L V12", power: "563 HP", torque: "850 Nm", top: "250 km/h" },
+    img: "/home/cullinan.jpg",
+    color: "#3d5a4e",
+  },
+  {
+    id: 4,
+    name: "Wraith",
+    year: 2024,
+    price: "$330,000",
+    category: "Coupe",
+    badge: "Limited",
+    description: "The most powerful Rolls-Royce ever built. A grand tourer that draws power from the stars — its panoramic Starlight Headliner a testament.",
+    specs: { engine: "6.6L V12", power: "624 HP", torque: "820 Nm", top: "250 km/h" },
+    img: "/home/wraith.jpg",
+    color: "#6b4226",
+  },
+  {
+    id: 5,
+    name: "Dawn",
+    year: 2024,
+    price: "$356,000",
+    category: "Convertible",
+    badge: "Exclusive",
+    description: "Open air perfection. The Dawn takes 22 seconds to lower its roof — each second a ceremony of transformation.",
+    specs: { engine: "6.6L V12", power: "563 HP", torque: "820 Nm", top: "250 km/h" },
+    img: "/home/dawn.jpg",
+    color: "#c4a882",
+  },
+  {
+    id: 6,
+    name: "Spectre",
+    year: 2024,
+    price: "$420,000",
+    category: "Electric",
+    badge: "Electric",
+    description: "The first fully electric Rolls-Royce. 585 horsepower of silent, instant torque. The future of effortless luxury.",
+    specs: { engine: "Dual Motor EV", power: "585 HP", torque: "900 Nm", top: "250 km/h" },
+    img: "/home/spectre.jpg",
+    color: "#2d3a4a",
+  },
+]
 
 const TESTIMONIALS = [
   { name: "Maximilian V.", location: "Geneva, Switzerland", text: "RedBlue Rolls delivered the Phantom in a condition that surpassed every expectation. The white-glove service was unmatched.", rating: 5 },
@@ -184,7 +258,7 @@ function App() {
         {/* VEHICLES */}
         <section className="vehicles_section">
           {/* VEHICLES INTRO TEXT */}
-          <div>
+          <div className="vehicles_collection_page">
             <p className="supscript">FULL COLLECTION</p>
             <h1 className="vehicles_heading title">Every <span className="title_span">Masterpiece</span></h1>
           </div>
@@ -206,7 +280,7 @@ function App() {
       
         {/* INTRO_TEXT */}
         <section className="about_intro_text">
-          <p className="supscript">OUR STORY</p>
+          <p className="supscript about_supscript">OUR STORY</p>
           <h1 className="title about_heading">RedBlue Rolls</h1>
         </section>
         
