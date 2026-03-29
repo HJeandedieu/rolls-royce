@@ -412,31 +412,37 @@ function App() {
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div className="user_initials">
-                    <div>
+                    <div className="input-warper">
                       <label htmlFor="fullName">Full Name</label><br />
-                      <input type="text" name="fullName" placeholder="Your name" style={{width:"19.5rem"}} required /><br />
+                      <input id="fullName" type="text" name="fullName" placeholder="Your name" style={{width:"19.5rem"}} required /><br />
                     </div>
-                    <div>
+                    <div className="input-warper">
                       <label htmlFor="email">Email</label><br />
-                      <input type="email" name="email" placeholder="your@email.com" style={{width:"19.5rem"}} required /><br />
+                      <input id="email" type="email" name="email" placeholder="your@email.com" style={{width:"19.5rem"}} required /><br />
                     </div>
                   </div>
-                  <label htmlFor="phone">PHONE</label><br />
-                  <input type="tel" name="phone" placeholder="+1 000 000 0000" required /><br />
-                  <label htmlFor="interest">MODEL OF INTEREST</label><br />
-                  <select name="interest" id="interest" required>
-                    <option value="select" selected hidden disabled>Select a Model</option>
-                    {CARS.map(car => (
-                      <option key={car.id} value={`${car.name} - ${car.price}`}>
-                        {`${car.name} - ${car.price}`}
-                      </option>
-                    ))}
+                  <div className="input-warper">
+                    <label htmlFor="phone">PHONE</label><br />
+                    <input id="phone" type="tel" name="phone" placeholder="+1 000 000 0000" required /><br />
+                  </div>
+                  <div className="input-warper">
+                    <label htmlFor="interest">MODEL OF INTEREST</label><br />
+                    <select name="interest" id="interest" required>
+                      <option value="select" selected hidden disabled>Select a Model</option>
+                      {CARS.map(car => (
+                        <option key={car.id} value={`${car.name} - ${car.price}`}>
+                          {`${car.name} - ${car.price}`}
+                        </option>
+                      ))}
                     </select><br />
-                  <label htmlFor="message">MESSAGE</label><br />
-                  <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea><br />
-                  <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting...." : "SUBMIT ENQUIRY"}
-                  </button>
+                  </div>
+                  <div className="input-warper">
+                    <label htmlFor="message">MESSAGE</label><br />
+                    <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea><br />
+                  </div>
+                  <div>
+                  <input type="submit" className="registration-button" disabled={isSubmitting} value={isSubmitting ? "Submitting...." : "SUBMIT ENQUIRY"} />
+                  </div>
                 </form>
                 <div>
                   {submitMessage && (
