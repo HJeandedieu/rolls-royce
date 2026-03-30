@@ -1,20 +1,55 @@
-const db = require("../config/db");
+const {getAllCars, getCarById, getCarsByCategory, createCar, updateCar, deleteCar} = require("../models/carModel")
 
-// FETCH ALL CARS
+// GET CARS
 
-async function getCars(res,req){
+const getCars = async(req,res) => {
     try{
-        const [cars] = await db.query("SELECT * FROM cars;");
-
-        if (cars.length === 0){
-            return res.status(404).json({message: "No cars found!"});
-        }
-
-        res.json(cars);
-    }catch (err){
-        console.error("Database error:", err);
-        res.status(500).json({message: "Server Error"})
+        const {category} = req.query
+        const cars = category ? await getCarsByCategory(category) : await getAllCars()
+        res.status(200).json(cars)
+    }catch(err){
+        res.status(500).json({message: "Failed to fetch cars"})
     }
 }
 
-module.exports = {getCars};
+const getCar = async (req, res) => {
+    try{
+        const car = await getCarById(req.params.id)
+        if(!car) return res.status(404).json({message: "Car not found"})
+        res.status(200).json(car)
+    }catch(err){
+        res.status(500).json({message: "Failed to fetch car."})
+    }
+}
+
+const addCar = async (req,res) => {
+    try{
+        const newCarId = await createCar(req.body)
+        res.status(201).json({message: "Car added", id: newCarId})
+    }catch(err){
+        res.status(500).json({message:"Failed to add car"});
+    }
+}
+
+const editCar = async (req,res) => {
+    try{
+        const updated = await updateCar(req.params.id, req.body)
+        if (!updated) return res.status(404).json({message:"Car not found"})
+        res.status(200).json({message:"Car updated"});
+    }catch (err){
+        res.status(500).json({message:"Failed to update car."})
+    }
+}
+
+
+const removeCar = async (req,res) => {
+    try{
+        const deleted = await deleteCar(req.params.id)
+        if(!deleted) return res.status(494).json({message: "Car not found"})
+        res.status(200).json({message: "Car deleted"})
+    }catch(err){
+        res.status(500).json({message:"Failed to delete car."})
+    }
+}
+
+module.exports = {getCars, getCar, addCar, editCar, removeCar}
