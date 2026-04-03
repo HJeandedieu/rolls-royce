@@ -2,9 +2,9 @@ const {getAllEnquiries, getEnquiryById, getEnquiryByUser, getEnquiriesByModel, c
 
 // GET ALL ENQUIRIES
 
-const getAllEnquiries = async (req, res) => {
+const fetchAllEnquiries = async (req, res) => {
     try{
-        const {enquiries} = await getAllEnquiries();
+        const enquiries = await getAllEnquiries();
         res.status(200).json(enquiries)
     }catch(err){
         res.status(500).json({message:"Failed to fetch enquiries"})
@@ -13,10 +13,10 @@ const getAllEnquiries = async (req, res) => {
 
 // GET ENQUIRY BY ID
 
-const getEnquiriesById = async (req,res) =>{
+const fetchEnquiriesById = async (req,res) =>{
     try{
         const id = req.params.id;
-        const {enquiry} = await getEnquiryById(id);
+        const enquiry = await getEnquiryById(id);
         res.status(200).json(enquiry)
     }catch(err){
         res.status(500).json({message:"Couldn't find Enquiry"})
@@ -25,19 +25,67 @@ const getEnquiriesById = async (req,res) =>{
 
 // GET ENQUIRIES BY USER
 
-const getEnquiryByUser = async(req, res) => {
+const fetchEnquiriesByUser = async(req, res) => {
     try{
         const {user} = req.query;
-        const {enquiries} = await getEnquiryByUser();
+        const enquiries = await getEnquiryByUser(user);
         res.status(200).json(enquiries)
     }catch(err){
         res.status(500).json({message:"Failed to fetch Enquiry"})
     }
 }
 
+// GET ENQUIRIES BY MODEL
+
+const fetchEnquiriesByModel = async(req,res) => {
+    try{
+        const {model} = req.query;
+        const enquiries = await getEnquiriesByModel(model)
+        res.status(200).json(enquiries)
+    }catch(err){
+        res.status(500).json({message:"Failed to fetch Enquiries"})
+    }
+}
+
+// CREATE ENQUIRY
+
+const insertEnquiry = async(req,res)=>{
+    try{
+        const newEnquiryId = await createEnquiry(req.body)
+        res.status(201).json({message:"Car added", id: newEnquiryId})
+    }catch(err){
+        res.status(500).json({message: "Failed to add enquiry"})
+    }
+}
+
+// UPDATE ENQUIRY
+
+const editEnquiry = async(req,res) => {
+    try{
+        const updated = await updateEnquiry(req.params.id, req.body);
+        if (!updated) return res.status(404).json({message:"Enquiry Not found"})
+        res.status(200).json({message:"Enquiry updated"})
+    }catch(err){
+        res.status(500).json({message: "Failed to update Enquiry"})
+    }
+}
+
+// UPDATE ENQUIRY STATUS
+
+const editEnquiryStatus = async(req,res) => {
+    try{
+        const {status} = req.body
+        const updated = await updateEnquiryStatus(req.params.id, status);
+        if (!updated) return res.status(404).json({message:"Enquiry not found"})
+        res.status(200).json({message: "Enquiry status updated."})
+    }catch(err){
+        res.status(500).json({message: "Failed to update Enquiry Status"})
+    }
+}
+
 // DELETE ENQUIRIES
 
-const removeEnquiry = async(req,res) => {
+const deleteEnquiry = async(req,res) => {
     try{
         const deleted = await removeEnquiry(req.params.id);
         if(!deleted) return res.status(404).json({message:"Enquiry not found."})
@@ -47,4 +95,4 @@ const removeEnquiry = async(req,res) => {
     }
 }
 
-module.exports = {removeEnquiry}
+module.exports = {fetchAllEnquiries, fetchEnquiriesById, fetchEnquiriesByUser, fetchEnquiriesByModel, insertEnquiry, editEnquiry, editEnquiryStatus, deleteEnquiry}
