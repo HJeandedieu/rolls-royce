@@ -19,11 +19,11 @@ const isCarInWishlist = async(user_id, car_id) =>{
 const addWishlistItem = async(item_data)=>{
     const {user_id,car_id} = item_data;
 
-    if(!isCarInWishlist(user_id,car_id)){
+    if(!await isCarInWishlist(user_id,car_id)){
         const [item] = await db.query(
             `INSERT INTO wishlist
-            (user_id, email, car_name, car_model)
-            VALUES(?,?,?,?)`, [user_id, car_id])
+            (user_id, car_id)
+            VALUES(?,?)`, [user_id, car_id])
         return item.insertId;
     }else{
         return null;
@@ -38,11 +38,11 @@ const removeWishlistItem = async(item_id) =>{
     return removed.affectedRows;
 }
 
-// CLEAR THE WHOLE WISHLIST
+// CLEAR USER WISHLIST
 
-const clearWishlist = async () =>{
-    const [clear] = await db.query("TRUNCATE wishlist;");
+const clearUserWishlist = async (user_id) =>{
+    const [clear] = await db.query("DELETE FROM wishlist WHERE user_id = ?", [user_id]);
     return clear.affectedRows;
 }
 
-modules.exports = {getUserWishlistItems, addWishlistItem, removeWishlistItem, clearWishlist}
+module.exports = {getUserWishlistItems, addWishlistItem, removeWishlistItem, clearUserWishlist}
