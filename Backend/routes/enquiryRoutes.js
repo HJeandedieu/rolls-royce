@@ -9,7 +9,7 @@ const {
     editEnquiry, 
     editEnquiryStatus, 
     deleteEnquiry 
-} = require("../controllers/enquireController")
+} = require("../controllers/enquiryController")
 const { protect } = require("../middleware/authMiddleware")
 
 

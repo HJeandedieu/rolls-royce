@@ -37,7 +37,7 @@ const createCar = async (carData) => {
 // UPDATE CAR
 
 const updateCar = async (id, carData) => {
-    const {id, name, year, price, category, badge, description, specs, img, color} = carData;
+    const { name, year, price, category, badge, description, specs, img, color } = carData;
     const [result] = await db.query(
         `UPDATE cars SET
         name = ?, year = ?, price = ?, category =? ,badge = ?, 
