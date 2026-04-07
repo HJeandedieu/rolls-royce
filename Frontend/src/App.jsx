@@ -1,85 +1,12 @@
 import { useState } from 'react';
 
+import api from "./api/axios"
 import Navbar from "./components/navbar.jsx";
 import Vehicles from "./components/vehicles.jsx";
 import Login from "./components/login.jsx";
 import Signup from "./components/signup.jsx";
 import Footer from "./components/footer.jsx";
 
-const CARS = [
-  {
-    id: 1,
-    name: "Phantom",
-    year: 2024,
-    price: "$495,000",
-    category: "Sedan",
-    badge: "Flagship",
-    description: "The pinnacle of automotive craftsmanship. 563 horsepower of serene power wrapped in hand-stitched leather and 44 lbs of sound-deadening material.",
-    specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "/home/phantom.jpg",
-    color: "#c8a96e",
-  },
-  {
-    id: 2,
-    name: "Ghost",
-    year: 2024,
-    price: "$332,500",
-    category: "Sedan",
-    badge: "Best Seller",
-    description: "Post Opulence. A whisper of power, a cathedral of calm. The Ghost redefines what a modern luxury sedan can be.",
-    specs: { engine: "6.75L V12", power: "563 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "/home/ghost.jpg",
-    color: "#9ea8b3",
-  },
-  {
-    id: 3,
-    name: "Cullinan",
-    year: 2024,
-    price: "$348,500",
-    category: "SUV",
-    badge: "New",
-    description: "Effortless everywhere. The world's only true super-luxury SUV, hand-built at Goodwood for those who refuse compromise.",
-    specs: { engine: "6.75L V12", power: "563 HP", torque: "850 Nm", top: "250 km/h" },
-    img: "/home/cullinan.jpg",
-    color: "#3d5a4e",
-  },
-  {
-    id: 4,
-    name: "Wraith",
-    year: 2024,
-    price: "$330,000",
-    category: "Coupe",
-    badge: "Limited",
-    description: "The most powerful Rolls-Royce ever built. A grand tourer that draws power from the stars — its panoramic Starlight Headliner a testament.",
-    specs: { engine: "6.6L V12", power: "624 HP", torque: "820 Nm", top: "250 km/h" },
-    img: "/home/wraith.jpg",
-    color: "#6b4226",
-  },
-  {
-    id: 5,
-    name: "Dawn",
-    year: 2024,
-    price: "$356,000",
-    category: "Convertible",
-    badge: "Exclusive",
-    description: "Open air perfection. The Dawn takes 22 seconds to lower its roof — each second a ceremony of transformation.",
-    specs: { engine: "6.6L V12", power: "563 HP", torque: "820 Nm", top: "250 km/h" },
-    img: "/home/dawn.jpg",
-    color: "#c4a882",
-  },
-  {
-    id: 6,
-    name: "Spectre",
-    year: 2024,
-    price: "$420,000",
-    category: "Electric",
-    badge: "Electric",
-    description: "The first fully electric Rolls-Royce. 585 horsepower of silent, instant torque. The future of effortless luxury.",
-    specs: { engine: "Dual Motor EV", power: "585 HP", torque: "900 Nm", top: "250 km/h" },
-    img: "/home/spectre.jpg",
-    color: "#2d3a4a",
-  },
-]
 
 const TESTIMONIALS = [
   { name: "Maximilian V.", location: "Geneva, Switzerland", text: "RedBlue Rolls delivered the Phantom in a condition that surpassed every expectation. The white-glove service was unmatched.", rating: 5 },
@@ -91,15 +18,53 @@ const TESTIMONIALS = [
 
 
 function App() {
+
+  // RESOURCES 
+  const [cars, setCars] = useState([])
+
+  useEffect(()=>{
+    const fetchCars = async ()=>{
+      try{
+        const res = await api.get("/cars")
+        setCars(res.data)
+      }catch(err){
+        console.error("Failed to fetch cars", err)
+      }
+    }
+    fetchCars()
+  }, [])
   const [currentPage, setCurrentPage] = useState("home");
   const [register, setRegister] = useState(false);
   const [registerMessage, setRegisterMessage] = useState("");
 
   const [submitMessage, setSubmitMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    interest: "",
+    message: ""
+  })
 
-  const handleSubmit = (e) => {
+  const showToast = (message) =>{
+    console.log(message)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try{
+      await api.post("/enquiries", {
+        full_name:contactForm.name,
+        email: contactForm.email,
+        phone: contactForm.phone,
+        model_interest: contactForm.interest,
+        message: contactForm.message
+      })
+      showToast("Enquiry submitted successfully")
+    }catch(err){
+      showToast("Failed to submit enquiry.")
+    }
     setIsSubmitting(true);
 
     setTimeout(() => {
@@ -413,23 +378,38 @@ function App() {
                 <form onSubmit={handleSubmit}>
                   <div className="user_initials">
                     <div className="input-warper">
-                      <label htmlFor="fullName">Full Name</label><br />
-                      <input id="fullName" type="text" name="fullName" placeholder="Your name" style={{width:"19.5rem"}} required /><br />
+                      <label htmlFor="full_name">Full Name</label><br />
+                      <input id="full_name" type="text" name="full_name" value={contactForm.full_name} onChange={(e) => 
+                        setContactForm({...contactForm, full_name: e.target.value})
+                      } placeholder="Your name" style={{width:"19.5rem"}} required /><br />
                     </div>
                     <div className="input-warper">
                       <label htmlFor="email">Email</label><br />
-                      <input id="email" type="email" name="email" placeholder="your@email.com" style={{width:"19.5rem"}} required /><br />
+                      <input id="email" type="email" name="email"
+                      value = {contactForm.email}
+                      onChange = {(e) => 
+                        setContactForm({ ...contactForm, email: e.target.value})
+                      }
+                      placeholder="your@email.com" style={{width:"19.5rem"}} required /><br />
                     </div>
                   </div>
                   <div className="input-warper">
                     <label htmlFor="phone">PHONE</label><br />
-                    <input id="phone" type="tel" name="phone" placeholder="+1 000 000 0000" required /><br />
+                    <input id="phone" type="tel" name="phone"
+                    value= {contactForm.phone}
+                    onChange = {(e) =>
+                      setContactForm({ ...contactForm, phone: e.target.value})
+                    } placeholder="+1 000 000 0000" required /><br />
                   </div>
                   <div className="input-warper">
                     <label htmlFor="interest">MODEL OF INTEREST</label><br />
-                    <select name="interest" id="interest" required>
+                    <select name="model_interest"
+                    value={contactForm.model_interest}
+                    onChange={(e) => 
+                      setContactForm({...contactForm, model_interest: e.target.value})
+                    } id="interest" required>
                       <option value="select" selected hidden disabled>Select a Model</option>
-                      {CARS.map(car => (
+                      {cars.map(car => (
                         <option key={car.id} value={`${car.name} - ${car.price}`}>
                           {`${car.name} - ${car.price}`}
                         </option>
@@ -438,7 +418,11 @@ function App() {
                   </div>
                   <div className="input-warper">
                     <label htmlFor="message">MESSAGE</label><br />
-                    <textarea name="message" id="message" placeholder="Tell us about your vision..."></textarea><br />
+                    <textarea name="message" 
+                    value={contactForm.message}
+                    onChange={(e)=>
+                      setContactForm({ ...contactForm, message: e.target.value})
+                    } id="message" placeholder="Tell us about your vision..."></textarea><br />
                   </div>
                   <div>
                   <input type="submit" className="registration-button" disabled={isSubmitting} value={isSubmitting ? "Submitting...." : "SUBMIT ENQUIRY"} />
