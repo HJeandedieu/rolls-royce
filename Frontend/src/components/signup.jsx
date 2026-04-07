@@ -1,19 +1,40 @@
 import { useState } from "react";
 
 function Signup({ navigate }) {
+
+  const [user, setUser] = useState(null);
+
   const [submitMessage, setSubmitMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  function handleSubmit(e) {
-    console.log("Submit handler called");
+
+  const [full_name, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const showToast = (message) => {
+    console.log(message)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Default prevented");
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try{
+      const res = await api.post("/auth/signup", {full_name, email, password})
+      localStorage.setItem("token", res.data.token)
+      setUser(res.data.user)
+      setAuthModal(null)
+
+      setTimeout(() => {
       setSubmitMessage("Account Created Successfully! Stay tuned for more!");
       setIsSubmitting(false);
       setTimeout(() => setSubmitMessage(""), 3000);
     }, 3000);
+
+    }catch(err) {
+      showToast("Signup failed")
+    }
+    
   }
 
   const handleClose = () => {
@@ -38,15 +59,15 @@ function Signup({ navigate }) {
         <form onSubmit={handleSubmit}>
           <label htmlFor="fullname">FULL NAME</label>
           <br />
-          <input type="text" name="fullname" placeholder="Your name" required />
+          <input type="text" name="full_name" value={full_name} onChange={(e) => setFullName(e.target.value)} placeholder="Your name" required />
           <br />
           <label htmlFor="email">EMAIL</label>
           <br />
-          <input type="email" name="email" placeholder="your@email.com" required />
+          <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" required />
           <br />
           <label htmlFor="password">PASSWORD</label>
           <br />
-          <input type="password" name="password" placeholder="........" required />
+          <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="........" required />
           <br />
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Creating..." : "CREATE ACCOUNT"}
