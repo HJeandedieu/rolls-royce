@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import api from "../api/axios"
+
 function Signup({ navigate }) {
 
   const [user, setUser] = useState(null);
@@ -23,7 +25,6 @@ function Signup({ navigate }) {
       const res = await api.post("/auth/signup", {full_name, email, password})
       localStorage.setItem("token", res.data.token)
       setUser(res.data.user)
-      setAuthModal(null)
 
       setTimeout(() => {
       setSubmitMessage("Account Created Successfully! Stay tuned for more!");

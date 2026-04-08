@@ -1,16 +1,28 @@
 import {useState} from "react";
 
+import api from "../api/axios"
+
 function Login({navigate}){
     
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setTimeout(()=>{
+
+        try{
+            const [email, setEmail] = useState("")
+            const [password, setPassword] = useState("")
+            localStorage.setItem("token", res.data.token)
+
+            setTimeout(()=>{
             setIsSubmitting(false);
             navigate("home")
         },3000);
+        }catch (err){
+            showToast("Invalid credentials")
+        }
+        
         
     }
 
@@ -32,10 +44,14 @@ function Login({navigate}){
             {/* LOGIN FORM */}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email">EMAIL</label><br />
-                <input type="email" name="email" placeholder="your@email.com" required /><br />
+                <input type="email" name="email"
+                value={email} onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com" required /><br />
                 <label htmlFor="password">PASSWORD</label><br />
                 
-                <input type="password" name="password" placeholder="........" required /> <br />
+                <input type="password" name="password"
+                value={password} onChange={(e) => setPassword(e.target.value)}
+                 placeholder="........" required /> <br />
                 <button type="submit" disabled={isSubmitting}>
                     {
                         isSubmitting ? "Signing In..." : "SIGN IN"

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {useEfffect} from "react";
 
 import api from "./api/axios"
 import Navbar from "./components/navbar.jsx";
@@ -380,7 +381,7 @@ function App() {
                     <div className="input-warper">
                       <label htmlFor="full_name">Full Name</label><br />
                       <input id="full_name" type="text" name="full_name" value={contactForm.full_name} onChange={(e) => 
-                        setContactForm({...contactForm, full_name: e.target.value})
+                        setContactForm({...contactForm, name: e.target.value})
                       } placeholder="Your name" style={{width:"19.5rem"}} required /><br />
                     </div>
                     <div className="input-warper">
@@ -404,11 +405,12 @@ function App() {
                   <div className="input-warper">
                     <label htmlFor="interest">MODEL OF INTEREST</label><br />
                     <select name="model_interest"
+                    defaultValue="select"
                     value={contactForm.model_interest}
                     onChange={(e) => 
                       setContactForm({...contactForm, model_interest: e.target.value})
                     } id="interest" required>
-                      <option value="select" selected hidden disabled>Select a Model</option>
+                      <option value="select" hidden disabled>Select a Model</option>
                       {cars.map(car => (
                         <option key={car.id} value={`${car.name} - ${car.price}`}>
                           {`${car.name} - ${car.price}`}
