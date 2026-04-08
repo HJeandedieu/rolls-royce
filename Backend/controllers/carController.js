@@ -27,6 +27,7 @@ const addCar = async (req,res) => {
         const newCarId = await createCar(req.body)
         res.status(201).json({message: "Car added", id: newCarId})
     }catch(err){
+        console.error(err)
         res.status(500).json({message:"Failed to add car"});
     }
 }
