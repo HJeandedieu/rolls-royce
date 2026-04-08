@@ -10,13 +10,13 @@ const getAllCars = async () =>{
 // GET CARS BY ID
 
 const getCarById = async (id) =>{
-    const [car] = await db.query("SELECT * FROM cars WHERE id = ?");
+    const [car] = await db.query("SELECT * FROM cars WHERE id = ?", [id]);
     return car[0];
 }
 
 // GET CARS BY CATEGORY
 
-const getCarByCategory = async ()=>{
+const getCarsByCategory = async (category)=>{
     const [cars] = await db.query("SELECT * FROM cars WHERE category = ?", [category])
     return cars;
 }
@@ -42,7 +42,7 @@ const updateCar = async (id, carData) => {
         `UPDATE cars SET
         name = ?, year = ?, price = ?, category =? ,badge = ?, 
         description = ?, specs= ?, img = ?, color= ?
-        WHER id = ?`, 
+        WHERE id = ?`, 
         [name,year, price, category, badge, description, specs, img, color]
     )
     return result.affectedRows;
@@ -55,4 +55,4 @@ const deleteCar = async (id) => {
     return result.affectedRows; // Returns 1 if deleted and 0 otherwise
 }
 
-module.exports = {getAllCars, getCarById, getCarByCategory, createCar, updateCar, deleteCar}
+module.exports = {getAllCars, getCarById, getCarsByCategory, createCar, updateCar, deleteCar}
