@@ -3,7 +3,8 @@ import {useState} from "react";
 import api from "../api/axios"
 
 function Login({navigate}){
-    
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -11,16 +12,16 @@ function Login({navigate}){
         setIsSubmitting(true);
 
         try{
-            const [email, setEmail] = useState("")
-            const [password, setPassword] = useState("")
+            const res = await api.post("/auth/login", {email, password})
             localStorage.setItem("token", res.data.token)
 
             setTimeout(()=>{
-            setIsSubmitting(false);
-            navigate("home")
-        },3000);
+                setIsSubmitting(false);
+                navigate("home")
+            },3000);
+
         }catch (err){
-            showToast("Invalid credentials")
+            setIsSubmitting(false)
         }
         
         

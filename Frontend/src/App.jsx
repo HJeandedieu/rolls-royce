@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import {useEfffect} from "react";
+import { useState, useEffect } from "react";
 
 import api from "./api/axios"
 import Navbar from "./components/navbar.jsx";
@@ -37,14 +36,15 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [register, setRegister] = useState(false);
   const [registerMessage, setRegisterMessage] = useState("");
+  const [color, setColor] = useState("gold")
 
   const [submitMessage, setSubmitMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [contactForm, setContactForm] = useState({
-    name: "",
+    full_name: "",
     email: "",
     phone: "",
-    interest: "",
+    model_interest: "select",
     message: ""
   })
 
@@ -54,25 +54,37 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
+    setIsSubmitting(true);
     try{
       await api.post("/enquiries", {
-        full_name:contactForm.name,
+        full_name:contactForm.full_name,
         email: contactForm.email,
         phone: contactForm.phone,
-        model_interest: contactForm.interest,
+        model_interest: contactForm.model_interest,
         message: contactForm.message
       })
       showToast("Enquiry submitted successfully")
-    }catch(err){
-      showToast("Failed to submit enquiry.")
-    }
-    setIsSubmitting(true);
+      setColor("gold")
 
-    setTimeout(() => {
-      setSubmitMessage("Your Enquiry has been received successfully!");
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitMessage(""), 3000);
-    },1500)
+      setTimeout(() => {
+        setSubmitMessage("Your Enquiry has been received successfully!");
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitMessage(""), 3000);
+      },1500)
+    }catch(err){
+      showToast(err.response?.data?.message || err.message)
+      setTimeout(()=> {
+        setSubmitMessage("Internal server Error")
+        setIsSubmitting(false)
+        setTimeout(() => setSubmitMessage(""),3000)
+      },1500)
+      setColor("rgb(39,39,39)")
+    }
+    
+
+    
   }
 
 
@@ -203,7 +215,7 @@ function App() {
             {register && (
                <p
                style={{
-                display: register ? "block":none
+                display: register ? "block":"none"
                }}
                ><span>RedBlue Rolls — ✓ </span>{registerMessage}</p>
             )}
@@ -381,7 +393,7 @@ function App() {
                     <div className="input-warper">
                       <label htmlFor="full_name">Full Name</label><br />
                       <input id="full_name" type="text" name="full_name" value={contactForm.full_name} onChange={(e) => 
-                        setContactForm({...contactForm, name: e.target.value})
+                        setContactForm({...contactForm, full_name: e.target.value})
                       } placeholder="Your name" style={{width:"19.5rem"}} required /><br />
                     </div>
                     <div className="input-warper">
@@ -405,7 +417,6 @@ function App() {
                   <div className="input-warper">
                     <label htmlFor="interest">MODEL OF INTEREST</label><br />
                     <select name="model_interest"
-                    defaultValue="select"
                     value={contactForm.model_interest}
                     onChange={(e) => 
                       setContactForm({...contactForm, model_interest: e.target.value})
@@ -432,7 +443,7 @@ function App() {
                 </form>
                 <div>
                   {submitMessage && (
-                    <p className="submit-message"><span>RedBlue Rolls</span> {submitMessage}</p>
+                    <p className="submit-message" style={{ border: "1px solid", borderColor: color }}><span>RedBlue Rolls</span> {submitMessage}</p>
                   )}
                 </div>
             </div>

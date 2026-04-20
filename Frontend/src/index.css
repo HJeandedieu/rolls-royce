@@ -726,6 +726,10 @@ span{
   .join-form input{
     width:20%;
   }
+  .join-form{
+    display:flex;
+    justify-content:center;
+  }
 }
 
 .join-text{
@@ -736,6 +740,8 @@ span{
 
 .join-form{
   margin:3rem 0rem;
+  display:flex;
+  justify-content:center;
 }
 
 .join-form input, button{
@@ -1298,7 +1304,6 @@ span{
   margin-top:16px;
   text-align:center;
   animation:slideIn 0.3s ease;
-  border:1px solid var(--gold);
 }
 
 @keyframes slideIn{

@@ -22,7 +22,7 @@ function Vehicles(){
       fetchCars()
     }, [])
 
-    const filteredCars = active === "All" ? cars : cars.filter(car => category === active)
+    const filteredCars = active === "All" ? cars : cars.filter(car => car.category === active)
 
     const handleActive = (category) =>{
         setActive(category);
